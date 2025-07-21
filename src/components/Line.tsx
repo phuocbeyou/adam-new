@@ -5,8 +5,8 @@ import React, { useRef, useEffect, useState } from "react";
 export const ScrollingText = ({
   text = "BECAUSE KINDNESS IS THE ONLY UTILITY THAT NEVER LOSES VALUE",
   speed = 50, // Lower = slower scroll
-  backgroundColor = "#FFFFFF",
-  textColor = "#000000",
+  backgroundColor = "rgba(255, 255, 255, 0.3)", // Equivalent to bg-white/10
+  textColor = "#FFFFFF", // White for contrast
   fontSize = "14px",
 }) => {
   const textRef = useRef(null);
@@ -28,11 +28,13 @@ export const ScrollingText = ({
     <div
       className="overflow-hidden relative"
       style={{
-        backgroundColor,
+        background: backgroundColor,
         height: "50px",
         display: "flex",
         alignItems: "center",
         whiteSpace: "nowrap",
+        opacity: 1,
+        zIndex: 10,
       }}
     >
       <div
@@ -42,14 +44,13 @@ export const ScrollingText = ({
           animation: `scroll ${animationDuration}s linear infinite`,
         }}
       >
-        {/* Lặp lại đoạn text nhiều lần để đảm bảo luôn liền mạch */}
+        {/* Repeated text for seamless scrolling */}
         <div
           ref={textRef}
+          className="flex font-neueMachinaBold"
           style={{
-            display: "flex",
             color: textColor,
             fontSize,
-            fontWeight: "bold",
           }}
         >
           <span
@@ -81,13 +82,12 @@ export const ScrollingText = ({
             {text}
           </span>
         </div>
-        {/* Bản sao giúp vòng lặp mượt */}
+        {/* Duplicate for smooth looping */}
         <div
+          className="flex font-neueMachinaBold"
           style={{
-            display: "flex",
             color: textColor,
             fontSize,
-            fontWeight: "bold",
           }}
         >
           <span

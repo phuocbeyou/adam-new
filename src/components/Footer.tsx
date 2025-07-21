@@ -36,11 +36,11 @@ to-[#0E93F3] text-white relative overflow-hidden"
           <img
             src="/logo/solana.png"
             alt="Solana"
-            className="w-30 h-auto mr-2"
+            className="w-30 h-auto mr-3"
           />
-          <span className="text-black font-bold">
+          <strong className="text-black text-[15px] font-bold">
             0 x a d n 2 s d a n 2 y o 2 8 u 0 x
-          </span>
+          </strong>
         </div>
 
         {/* Disclaimer */}

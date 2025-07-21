@@ -179,7 +179,7 @@ export default function MainSection() {
           <div className="text-center relative">
             {/* Main Title with Animation */}
             <h1
-              className={`text-6xl lg:text-8xl xl:text-[200px] text-white mb-8 lg:mb-12 transition-all duration-2000 ${
+              className={`text-6xl lg:text-8xl font-bold xl:text-[200px] text-white mb-8 lg:mb-12 transition-all duration-2000 ${
                 showText
                   ? "opacity-100 transform translate-y-0"
                   : "opacity-0 transform translate-y-10"
@@ -247,19 +247,19 @@ export default function MainSection() {
               style={{ animationDelay: "0.8s" }}
             >
               <div className="text-left lg:text-right">
-                <h2 className="text-2xl lg:text-3xl text-white mr-50 mb-10">
+                <h2 className="text-lg lg:text-xl font-bold  text-white mr-50 mb-10">
                   Meme from Myth
                 </h2>
-                <p className="text-lg lg:text-xl text-white mr-20">
+                <p className="text-xl lg:text-2xl font-bold  text-white mr-20">
                   LET EVERY $ADAM
                 </p>
               </div>
 
               <div className="text-left">
-                <h2 className="text-2xl lg:text-3xl text-white ml-50  mb-10">
+                <h2 className="text-lg lg:text-xl font-bold  text-white ml-50  mb-10">
                   Built for Humanity.
                 </h2>
-                <p className="text-lg lg:text-xl text-white ml-20">
+                <p className="text-xl lg:text-2xl font-bold  text-white ml-20">
                   BE A PRAYER FOR A BETTER WORLD
                 </p>
               </div>
@@ -285,42 +285,42 @@ export default function MainSection() {
                 </h2>
               </div>
               <p
-                className="text-lg lg:text-sm animate-fade-up"
+                className="text-lg lg:text-sm animate-fade-up font-bold"
                 style={{ animationDelay: "1.2s" }}
               >
                 <AnimateLetters text="Meme from Myth. Built for Humanity." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up"
+                className="text-base lg:text-sm animate-fade-up font-bold "
                 style={{ animationDelay: "1.4s" }}
               >
                 <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up"
+                className="text-base lg:text-sm animate-fade-up font-bold "
                 style={{ animationDelay: "1.6s" }}
               >
                 <AnimateLetters text="Now reborn as a meme coin for a new digital age – not to rule, but to remind us:" />
               </p>
 
               <p
-                className="text-lg lg:text-sm animate-fade-up"
+                className="text-lg lg:text-sm animate-fade-up font-bold "
                 style={{ animationDelay: "1.8s" }}
               >
                 <AnimateLetters text="PNL isn't what you hold, it's what you give." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up"
+                className="text-base lg:text-sm animate-fade-up font-bold "
                 style={{ animationDelay: "2.0s" }}
               >
                 <AnimateLetters text="Every stake is a belief. Every meme, a chance to support a better world." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up"
+                className="text-base lg:text-sm animate-fade-up font-bold "
                 style={{ animationDelay: "2.2s" }}
               >
                 <AnimateLetters text="This is the meme with meaning — and $ADAM is where it begins." />
@@ -328,19 +328,34 @@ export default function MainSection() {
 
               {/* Solana Address */}
               <div
-                className="mt-6 lg:mt-8 animate-fade-up"
+                className="mt-6 lg:mt-8 animate-fade-up font-bold"
                 style={{ animationDelay: "2.4s" }}
               >
-                <div className="bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] rounded-full border-2 border-white px-10 py-4 flex items-center justify-between transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-                  <div className="flex items-center space-x-2">
-                    <img
-                      src="/logo/solana.png"
-                      alt=""
-                      className="w-30 h-auto"
-                    />
-                  </div>
-                  <span className="text-black font-mono font-bold text-sm lg:text-base">
-                    0 x a d n 2 s d a n 2 y o 2 8 u 0 x
+                <div className="inline-flex items-center gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-6 py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                  <img
+                    src="/logo/solana.png"
+                    alt="Solana"
+                    className="h-6 w-auto"
+                  />
+                  <span className="font-mono text-sm font-bold tracking-wider text-black lg:text-base">
+                    <span className="mr-1">0</span>
+                    <span className="mr-1">x</span>
+                    <span className="mr-1">a</span>
+                    <span className="mr-1">d</span>
+                    <span className="mr-1">n</span>
+                    <span className="mr-1">2</span>
+                    <span className="mr-1">s</span>
+                    <span className="mr-1">d</span>
+                    <span className="mr-1">a</span>
+                    <span className="mr-1">n</span>
+                    <span className="mr-1">2</span>
+                    <span className="mr-1">y</span>
+                    <span className="mr-1">o</span>
+                    <span className="mr-1">2</span>
+                    <span className="mr-1">8</span>
+                    <span className="mr-1">u</span>
+                    <span className="mr-1">0</span>
+                    <span className="mr-1">x</span>
                   </span>
                 </div>
               </div>

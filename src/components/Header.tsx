@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header className="relative">
-      <div className="bg-white/10 backdrop-blur-sm shadow-lg">
+      <div className="backdrop-blur-sm shadow-lg">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="flex justify-between items-center lg:h-16">
             {/* Logo */}
@@ -36,7 +36,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-25">
               <button
                 onClick={() => scrollToSection("home")}
                 className="text-white hover:text-gray-900 font-medium transition-colors cursor-pointer"
@@ -66,7 +66,7 @@ export default function Header() {
             {/* Connect Button */}
             <button className="uiverse">
               <div className="wrapper">
-                <span>CONNECT</span>
+                <span className="text-white">CONNECT</span>
                 <div className="circle circle-12"></div>
                 <div className="circle circle-11"></div>
                 <div className="circle circle-10"></div>
