@@ -1,7 +1,94 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import {
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useEffect,
+  useState,
+} from "react";
+import { motion, MotionValue } from "framer-motion";
+
+interface AnimateLettersProps {
+  text: string;
+  className?: string;
+}
+
+export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.06,
+      },
+    },
+  };
+
+  const child = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeInOut" as const },
+    },
+  };
+
+  return (
+    <motion.span
+      className={className}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.7 }}
+      style={{ display: "inline-block" }}
+    >
+      {text
+        .split("")
+        .map(
+          (
+            char:
+              | string
+              | number
+              | bigint
+              | boolean
+              | ReactElement<unknown, string | JSXElementConstructor<any>>
+              | Iterable<ReactNode>
+              | Promise<
+                  | string
+                  | number
+                  | bigint
+                  | boolean
+                  | ReactPortal
+                  | ReactElement<unknown, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | null
+                  | undefined
+                >
+              | MotionValue<number>
+              | MotionValue<string>
+              | null
+              | undefined,
+            i: Key | null | undefined
+          ) => (
+            <motion.span
+              key={i}
+              variants={child}
+              style={{
+                display: "inline-block",
+                whiteSpace: char === " " ? "pre" : "normal",
+              }}
+            >
+              {char}
+            </motion.span>
+          )
+        )}
+    </motion.span>
+  );
+}
 
 export default function MainSection() {
   const [showText, setShowText] = useState(false);
@@ -144,7 +231,7 @@ export default function MainSection() {
                   alt="Adam Character"
                   width={500}
                   height={650}
-                  className="w-auto h-64 lg:h-80 xl:h-170 mt-[-100px] hover:scale-110"
+                  className="w-auto h-64 lg:h-80 xl:h-170 mt-[-170px] hover:scale-110"
                   priority
                 />
               </div>
@@ -160,17 +247,19 @@ export default function MainSection() {
               style={{ animationDelay: "0.8s" }}
             >
               <div className="text-left lg:text-right">
-                <h2 className="text-2xl lg:text-3xl text-white mr-30 mb-10">
+                <h2 className="text-2xl lg:text-3xl text-white mr-50 mb-10">
                   Meme from Myth
                 </h2>
-                <p className="text-lg lg:text-xl text-white">LET EVERY $ADAM</p>
+                <p className="text-lg lg:text-xl text-white mr-20">
+                  LET EVERY $ADAM
+                </p>
               </div>
 
               <div className="text-left">
-                <h2 className="text-2xl lg:text-3xl text-white ml-30 mb-10">
+                <h2 className="text-2xl lg:text-3xl text-white ml-50  mb-10">
                   Built for Humanity.
                 </h2>
-                <p className="text-lg lg:text-xl text-white">
+                <p className="text-lg lg:text-xl text-white ml-20">
                   BE A PRAYER FOR A BETTER WORLD
                 </p>
               </div>
@@ -192,110 +281,49 @@ export default function MainSection() {
             >
               <div className="mb-8 lg:mb-12">
                 <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold">
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.1s" }}
-                  >
-                    A
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.2s" }}
-                  >
-                    B
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.3s" }}
-                  >
-                    O
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.4s" }}
-                  >
-                    U
-                  </span>
-                  <span
-                    className="mr-10 inline-block animate-letter"
-                    style={{ animationDelay: "0.5s" }}
-                  >
-                    T
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.6s" }}
-                  >
-                    $
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.7s" }}
-                  >
-                    A
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.8s" }}
-                  >
-                    D
-                  </span>
-                  <span
-                    className="mr-3 inline-block animate-letter"
-                    style={{ animationDelay: "0.9s" }}
-                  >
-                    A
-                  </span>
-                  <span
-                    className="inline-block animate-letter"
-                    style={{ animationDelay: "1.0s" }}
-                  >
-                    M
-                  </span>
+                  <AnimateLetters text="ABOUT $ADAM" />
                 </h2>
               </div>
               <p
                 className="text-lg lg:text-sm animate-fade-up"
                 style={{ animationDelay: "1.2s" }}
               >
-                Meme from Myth. Built for Humanity.
+                <AnimateLetters text="Meme from Myth. Built for Humanity." />
               </p>
 
               <p
                 className="text-base lg:text-sm animate-fade-up"
                 style={{ animationDelay: "1.4s" }}
               >
-                Our Father — $ADAM. He left Eden, but not his children.
+                <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
               </p>
 
               <p
                 className="text-base lg:text-sm animate-fade-up"
                 style={{ animationDelay: "1.6s" }}
               >
-                Now reborn as a meme coin for a new digital age – not to rule,
-                but to remind us:
+                <AnimateLetters text="Now reborn as a meme coin for a new digital age – not to rule, but to remind us:" />
               </p>
 
               <p
                 className="text-lg lg:text-sm animate-fade-up"
                 style={{ animationDelay: "1.8s" }}
               >
-                PNL isn&apos;t what you hold, it&apos;s what you give.
+                <AnimateLetters text="PNL isn't what you hold, it's what you give." />
               </p>
 
               <p
                 className="text-base lg:text-sm animate-fade-up"
                 style={{ animationDelay: "2.0s" }}
               >
-                Every stake is a belief. Every meme, a chance to support a
-                better world.
+                <AnimateLetters text="Every stake is a belief. Every meme, a chance to support a better world." />
               </p>
 
               <p
                 className="text-base lg:text-sm animate-fade-up"
                 style={{ animationDelay: "2.2s" }}
               >
-                This is the meme with meaning — and $ADAM is where it begins.
+                <AnimateLetters text="This is the meme with meaning — and $ADAM is where it begins." />
               </p>
 
               {/* Solana Address */}

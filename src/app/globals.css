@@ -8,8 +8,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,39 +17,15 @@
   }
 }
 @font-face {
-  font-family: "NeueMachina";
-  src: url("../../public/fonts/NeueMachina/NeueMachina-Regular.otf")
-    format("truetype");
+  font-family: "NeueMachina-Bold";
+  src: url("../../public/fonts/NeueMachina-Bold.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 10rem;
-  overflow-x: hidden;
-}
-
-* {
-  scroll-behavior: smooth;
-}
-
-/* Enhanced smooth scrolling with CSS scroll-snap */
-body {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
-/* Scroll snap for each section */
-.scroll-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "NeueMachina";
+  font-family: "NeueMachina-Bold";
 }

@@ -82,7 +82,7 @@ const RoadmapComponent = () => {
     <div className="">
       {/* Title */}
       <div className="relative z-20 text-center">
-        <h1 className="text-6xl md:text-5xl p-2 font-bold text-white bg-white/20 backdrop-blur-sm tracking-wider">
+        <h1 className="text-6xl md:text-5xl p-2 font-bold text-white  backdrop-blur-sm tracking-wider">
           ROADMAP
         </h1>
       </div>

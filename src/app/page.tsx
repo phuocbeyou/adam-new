@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import AdamSection from "@/components/AdamSection";
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header";
@@ -33,7 +34,7 @@ export default function Home() {
       </div>
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section">
         {/* Video Background */}
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -41,7 +42,12 @@ export default function Home() {
           className="absolute inset-0 w-full h-auto object-cover"
         >
           <source src="/bg/bg-2-test.mp4" type="video/mp4" />
-        </video>
+        </video> */}
+        <img
+          src="/bg/bg-4.png"
+          alt=""
+          className="absolute inset-0 w-full h-auto object-cover"
+        />
         <div className="relative z-10">
           <div id="adamnomic">
             <AdamSection />

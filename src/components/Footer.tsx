@@ -8,16 +8,19 @@ import { motion } from "framer-motion";
 
 export const Footer = () => {
   return (
-    <div className="bg-black text-white relative overflow-hidden">
+    <div
+      className="bg-gradient-to-b from-[#000000]
+to-[#0E93F3] text-white relative overflow-hidden"
+    >
       <Scrolling />
 
       {/* Main content with animation */}
       <motion.div
         className="px-6 md:px-12 py-12 max-w-4xl mx-auto text-center space-y-6"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.95, y: 60 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 2.2, ease: "easeInOut" }}
       >
         {/* Logo & token info */}
         <div className="flex justify-center items-center gap-4">
@@ -61,7 +64,7 @@ export const Footer = () => {
           {[FaXTwitter, FaTelegram, FaDiscord].map((Icon, i) => (
             <div
               key={i}
-              className="w-10 h-10 p-2 flex mb-[-50px] items-center justify-center rounded-full bg-black border border-white hover:scale-110 transition-transform duration-200 cursor-pointer"
+              className="w-10 h-10 p-2 flex mb-[-50px] items-center justify-center rounded-full bg-white/20 border border-white hover:scale-110 transition-transform duration-200 cursor-pointer"
             >
               <Icon className="text-white w-5 h-5" />
             </div>
@@ -69,7 +72,7 @@ export const Footer = () => {
         </div>
 
         {/* Footer links */}
-        <div className="flex justify-between items-center text-xs text-gray-500 mt-10 px-4">
+        <div className="flex justify-between items-center text-xs text-white mt-10 px-4">
           <span>Private Policy</span>
           <span>Term of Condition</span>
         </div>

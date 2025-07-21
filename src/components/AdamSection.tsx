@@ -1,14 +1,159 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const contentData = [
+  {
+    id: "why-adam",
+    title: "Why $ADAM?",
+    content: [
+      {
+        type: "paragraph",
+        text: "$ADAM - a meme that gives back - where every action of $ADAM (stake, vote, or hold) helps fund real-world impact",
+      },
+      {
+        type: "paragraph",
+        text: "A memecoin that commits to people - not just pump and dump",
+      },
+      {
+        type: "paragraph",
+        text: "A memecoin where giving is embedded in the code",
+      },
+      {
+        type: "paragraph",
+        text: "A memecoin with meaning into the missions for spreading out the love for better world, and transactions into transformation",
+      },
+      {
+        type: "paragraph",
+        text: "Whether you're a developer, a dreamer, or a donor - $ADAM give everyone a way to do good, transparently and collectively, without needing a foundation, fame, or fortune.",
+      },
+    ],
+  },
+  {
+    id: "mission",
+    title: "Mission",
+    content: [
+      {
+        type: "paragraph",
+        text: "To awaken a new standard in Web3 where every $ADAM transaction is not just a trade, but a conscious act of giving.",
+      },
+      {
+        type: "paragraph",
+        text: "Our mission is to transform memes into meaningful movements, and turn every on-chain action into real-world impact.",
+      },
+      {
+        type: "paragraph",
+        text: "$ADAM fuels a karma-driven path of sharing, where compassion is encoded by design, and generosity becomes the default setting.",
+      },
+      {
+        type: "paragraph",
+        text: "Each interaction with $ADAM whether staking, DAO voting, or simply holding is a seed for collective healing, balance, and a better future.",
+      },
+      {
+        type: "paragraph",
+        text: "Planted on-chain. Grown through community. Harvested as shared humanity.",
+      },
+    ],
+  },
+  {
+    id: "vision",
+    title: "Vision",
+    content: [
+      {
+        type: "paragraph",
+        text: "We envision a world where technology is no longer just a tool for efficiency, but a vessel for healing, consciousness, and collective elevation.",
+      },
+      {
+        type: "paragraph",
+        text: "Where $ADAM is not merely meme, but sacred energies - the masculine energy of trendsetting and leading the world for a better existence, the 3D world of survival to the realm of awakening, unity, and shared purpose and spreadign the supports",
+      },
+      {
+        type: "paragraph",
+        text: "In this future, blockchain becomes the new scripture not just recording transactions, but encoding karma, compassion, and collective will",
+      },
+      { type: "paragraph", text: "A decentralized world where:" },
+      { type: "bullet", text: "Wealth is redefined as impact," },
+      { type: "bullet", text: "Value is measured by intention," },
+      {
+        type: "bullet",
+        text: "And every action, stake, and vote helps as a weave of a new contribution to a better place",
+      },
+      {
+        type: "paragraph",
+        text: "One built on clarity, responsibility, and love for humanity",
+      },
+    ],
+  },
+];
+
+const AnimatedTitle = ({
+  text,
+  as: Component = "h1",
+  className,
+  onMouseEnter,
+  isActive,
+}: {
+  text: string;
+  as?: React.ElementType;
+  className?: string;
+  onMouseEnter: () => void;
+  isActive: boolean;
+}) => {
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.2 },
+    },
+  };
+
+  const child = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeInOut" as const },
+    },
+  };
+
+  return (
+    <Component
+      className={`${className} ${
+        isActive
+          ? "text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#3499FF] bg-clip-text"
+          : "text-white"
+      } transition-all duration-300 transform hover:scale-105 cursor-default`}
+      onMouseEnter={onMouseEnter}
+    >
+      <motion.span
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+        className="inline-block overflow-hidden"
+        aria-label={text}
+      >
+        {text.split("").map((char, index) => (
+          <motion.span
+            key={index}
+            variants={child}
+            className="inline-block"
+            style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </motion.span>
+    </Component>
+  );
+};
 
 const AdamSection = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
-  );
-  const [hoveredElement, setHoveredElement] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [activeSection, setActiveSection] = useState(contentData[0].id);
+  const [isHovering, setIsHovering] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const features = [
     {
@@ -45,49 +190,73 @@ const AdamSection = () => {
   ];
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target as HTMLElement;
-            const animateId = target.dataset.animateId;
-            if (animateId) {
-              setVisibleElements((prev) => new Set([...prev, animateId]));
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "50px 0px -100px 0px",
+    if (isHovering) {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
       }
-    );
+      return;
+    }
 
-    const elementsToObserve =
-      sectionRef.current.querySelectorAll<HTMLElement>("[data-animate-id]");
-    elementsToObserve.forEach((el) => {
-      if (observerRef.current) {
-        observerRef.current.observe(el);
-      }
-    });
+    timerRef.current = setInterval(() => {
+      setActiveSection((prevId) => {
+        const currentIndex = contentData.findIndex((s) => s.id === prevId);
+        const nextIndex = (currentIndex + 1) % contentData.length;
+        return contentData[nextIndex].id;
+      });
+    }, 7000); // 7 seconds loop
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
       }
     };
-  }, []);
+  }, [isHovering]);
 
-  const getAnimationClass = (id: string, baseClass: string = "") => {
-    const isVisible = visibleElements.has(id);
-    return `${baseClass} transition-all duration-700 ease-out ${
-      isVisible
-        ? "opacity-100 translate-y-0 scale-100"
-        : "opacity-0 translate-y-8 scale-95"
-    }`;
+  const title = "WHAT YOU CAN DO WITH $ADAM?";
+
+  // Variants cho từng chữ
+  const letterVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeInOut" as const },
+    },
   };
+
+  const titleContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.08, // thời gian delay giữa các chữ
+      },
+    },
+  };
+
+  const featureVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: "easeInOut" as const,
+        delay: 0.2 + i * 0.25, // delay tăng dần cho từng box
+      },
+    }),
+  };
+
+  const handleMouseEnter = (id: string) => {
+    setIsHovering(true);
+    setActiveSection(id);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  const activeContent =
+    contentData.find((s) => s.id === activeSection) || contentData[0];
 
   return (
     <div className="relative overflow-hidden" ref={sectionRef}>
@@ -98,44 +267,47 @@ const AdamSection = () => {
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row items-center justify-between mb-12 lg:mb-16 gap-6 lg:gap-12">
           {/* Left Column - Animated */}
-          <div
-            className={getAnimationClass(
-              "header-left",
-              "lg:w-1/3 space-y-6 lg:space-y-20"
-            )}
-            data-animate-id="header-left"
+          <motion.div
+            className="lg:w-1/3 space-y-6 lg:space-y-20"
+            onMouseLeave={handleMouseLeave}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
           >
-            <h1
-              className="text-3xl sm:text-4xl lg:text-5xl p-2 text-white transition-all duration-700 hover:text-transparent hover:bg-gradient-to-r hover:from-[#FFFFFF] hover:to-[#3499FF] hover:bg-clip-text hover:scale-105 transform cursor-default"
-              onMouseEnter={() => setHoveredElement("why-adam")}
-              onMouseLeave={() => setHoveredElement(null)}
-            >
-              Why $ADAM?
-            </h1>
+            <AnimatedTitle
+              as="h1"
+              text="Why $ADAM?"
+              className="text-3xl sm:text-4xl lg:text-5xl p-2"
+              onMouseEnter={() => handleMouseEnter("why-adam")}
+              isActive={activeSection === "why-adam"}
+            />
 
             <div className="space-y-4 lg:space-y-20 text-lg">
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl text-white transition-all duration-700 hover:text-transparent hover:bg-gradient-to-r hover:from-[#FFFFFF] hover:to-[#3499FF] hover:bg-clip-text hover:scale-105 transform cursor-default"
-                onMouseEnter={() => setHoveredElement("mission")}
-                onMouseLeave={() => setHoveredElement(null)}
-              >
-                Mission
-              </h2>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl text-white transition-all duration-700 hover:text-transparent hover:bg-gradient-to-r hover:from-[#FFFFFF] hover:to-[#3499FF] hover:bg-clip-text hover:scale-105 transform cursor-default"
-                onMouseEnter={() => setHoveredElement("vision")}
-                onMouseLeave={() => setHoveredElement(null)}
-              >
-                Vision
-              </h2>
+              <AnimatedTitle
+                as="h2"
+                text="Mission"
+                className="text-2xl sm:text-3xl lg:text-4xl"
+                onMouseEnter={() => handleMouseEnter("mission")}
+                isActive={activeSection === "mission"}
+              />
+              <AnimatedTitle
+                as="h2"
+                text="Vision"
+                className="text-2xl sm:text-3xl lg:text-4xl"
+                onMouseEnter={() => handleMouseEnter("vision")}
+                isActive={activeSection === "vision"}
+              />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Animated */}
-          <div
-            className={getAnimationClass("header-right", "lg:w-2/3")}
-            data-animate-id="header-right"
-            style={{ transitionDelay: "200ms" }}
+          <motion.div
+            className="lg:w-2/3"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
           >
             <div className="relative group">
               {/* Rectangle 44 nằm song song với border xanh */}
@@ -151,95 +323,73 @@ const AdamSection = () => {
               />
 
               {/* Content container với border xanh */}
-              <div className="relative bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-4xl p-4 sm:p-6 lg:p-[60px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF]">
-                <div
-                  className={`mb-10 text-base sm:text-lg lg:text-[20px] transition-all duration-500 ${
-                    hoveredElement === "why-adam"
-                      ? "text-[#3DBDF1] scale-105 font-semibold drop-shadow-lg shadow-blue-400/50"
-                      : "text-white"
-                  }`}
-                >
-                  $ADAM - a meme that gives back - where every action of $ADAM
-                  (stake, vote, or hodl) helps fund real-world impact
-                </div>
-                <div className="space-y-3 sm:space-y-4 text-gray-300 mb-10">
-                  <div
-                    className={`flex items-start gap-2 sm:gap-3 text-base sm:text-lg transition-all duration-500 ${
-                      hoveredElement === "mission"
-                        ? "text-[#3DBDF1] scale-105 font-semibold drop-shadow-lg shadow-blue-400/50"
-                        : "text-white"
-                    }`}
+              <div className="relative bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-4xl p-4 sm:p-6 lg:p-[60px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF] min-h-[450px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeSection}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="space-y-4 text-gray-300 text-base sm:text-lg"
                   >
-                    <div className="w-2 h-2 bg-white rounded-full mt-1 sm:mt-2 flex-shrink-0 transition-all duration-300 hover:bg-[#3DBDF1] hover:scale-125"></div>
-                    <p>
-                      A memecoin that commits to people - not just pump and dump
-                    </p>
-                  </div>
-                  <div
-                    className={`flex items-start gap-2 sm:gap-3 text-base sm:text-lg transition-all duration-500 ${
-                      hoveredElement === "mission"
-                        ? "text-[#3DBDF1] scale-105 font-semibold drop-shadow-lg shadow-blue-400/50"
-                        : "text-white"
-                    }`}
-                  >
-                    <div className="w-2 h-2 bg-white rounded-full mt-1 sm:mt-2 flex-shrink-0 transition-all duration-300 hover:bg-[#3DBDF1] hover:scale-125"></div>
-                    <p>A memecoin where giving is embedded in the code</p>
-                  </div>
-                  <div
-                    className={`flex items-start gap-2 sm:gap-3 text-base sm:text-lg transition-all duration-500 ${
-                      hoveredElement === "mission"
-                        ? "text-[#3DBDF1] scale-105 font-semibold drop-shadow-lg shadow-blue-400/50"
-                        : "text-white"
-                    }`}
-                  >
-                    <div className="w-2 h-2 bg-white rounded-full mt-1 sm:mt-2 flex-shrink-0 transition-all duration-300 hover:bg-[#3DBDF1] hover:scale-125"></div>
-                    <p>
-                      A memecoin with meaning into the missions for spreading
-                      out the love for better world, and transactions into
-                      transformation
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className={`mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg transition-all duration-500 ${
-                    hoveredElement === "vision"
-                      ? "text-[#3DBDF1] scale-105 font-semibold drop-shadow-lg shadow-blue-400/50"
-                      : "text-white"
-                  }`}
-                >
-                  <p className="">
-                    Whether you&apos;re a developer, a dreamer, or a doer -
-                    $ADAM gives everyone a way to do good, transparently and
-                    collectively, without needing a foundation, fame, or
-                    fortune.
-                  </p>
-                </div>
+                    {activeContent.content.map((item, index) => {
+                      if (item.type === "bullet") {
+                        return (
+                          <div
+                            key={index}
+                            className="flex items-start gap-3 pl-4"
+                          >
+                            <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                            <p>{item.text}</p>
+                          </div>
+                        );
+                      }
+                      return <p key={index}>{item.text}</p>;
+                    })}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* What You Can Do Section */}
         <div className="my-40 lg:mb-16">
           <h2
-            className={getAnimationClass(
-              "features-title",
-              "text-3xl sm:text-4xl lg:text-5xl text-white text-center mb-6 lg:mb-16 font-bold transition-all duration-700 hover:text-transparent hover:bg-gradient-to-r hover:from-[#FFFFFF] hover:to-[#3499FF] hover:bg-clip-text hover:scale-110 transform cursor-default"
-            )}
+            className="text-3xl sm:text-4xl lg:text-5xl text-white text-center mb-6 lg:mb-16 font-bold cursor-default flex justify-center"
             data-animate-id="features-title"
           >
-            WHAT YOU CAN DO WITH $ADAM?
+            <motion.span
+              variants={titleContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.7 }}
+              className="inline-flex"
+            >
+              {title.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  variants={letterVariants}
+                  className="inline-block"
+                  style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={getAnimationClass(
-                  `feature-${index}`,
-                  "group flex flex-col items-center text-center"
-                )}
-                data-animate-id={`feature-${index}`}
-                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+                className="group flex flex-col items-center text-center"
+                variants={featureVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={index}
               >
                 <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                   <img
@@ -261,17 +411,19 @@ const AdamSection = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Karma Pool Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-          <div
-            className={getAnimationClass("karma-pool", "")}
-            data-animate-id="karma-pool"
-          >
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1.6, ease: "easeInOut" as const }}
+        >
+          <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-4 lg:mb-8 font-bold transition-all duration-700 hover:text-transparent hover:bg-gradient-to-r hover:from-[#FFFFFF] hover:to-[#3499FF] hover:bg-clip-text hover:scale-105 transform cursor-default">
               KARMA POOL?
             </h2>
@@ -292,7 +444,7 @@ const AdamSection = () => {
               Give On-Chain. Change Off-Chain.
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Enhanced Background Effects */}

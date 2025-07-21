@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
@@ -5,7 +6,7 @@ export const ScrollingText = ({
   text = "BECAUSE KINDNESS IS THE ONLY UTILITY THAT NEVER LOSES VALUE",
   speed = 50, // Lower = slower scroll
   backgroundColor = "#FFFFFF",
-  textColor = "#FFAE00",
+  textColor = "#000000",
   fontSize = "14px",
 }) => {
   const textRef = useRef(null);
@@ -51,10 +52,34 @@ export const ScrollingText = ({
             fontWeight: "bold",
           }}
         >
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
         </div>
         {/* Bản sao giúp vòng lặp mượt */}
         <div
@@ -65,10 +90,34 @@ export const ScrollingText = ({
             fontWeight: "bold",
           }}
         >
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
-          <span style={{ paddingRight: "2rem" }}>★ {text}</span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
+          <span
+            style={{ paddingRight: "2rem" }}
+            className="flex items-center gap-2"
+          >
+            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
+            {text}
+          </span>
         </div>
       </div>
 
