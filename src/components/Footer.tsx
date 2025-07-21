@@ -8,15 +8,29 @@ import { motion } from "framer-motion";
 
 export const Footer = () => {
   return (
-    <div
-      className="bg-gradient-to-b from-[#000000]
-to-[#0E93F3] text-white relative overflow-hidden"
-    >
+    <div className="relative overflow-hidden text-white">
+      {/* Background image - lớp dưới cùng */}
+      <img
+        src="/footer/bg.png"
+        alt="footer background"
+        className="absolute inset-0 w-full h-auto object-cover z-[-30] pointer-events-none"
+      />
+
+      {/* Gradient overlay - lớp giữa */}
+      <div
+        className="absolute inset-0 z-[-20]"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8) , rgba(142, 109, 18, 1)",
+        }}
+      />
+
+      {/* Scrolling text - có thể để z-10 */}
       <Scrolling />
 
-      {/* Main content with animation */}
+      {/* Main content */}
       <motion.div
-        className="px-6 md:px-12 py-12 max-w-4xl mx-auto text-center space-y-6"
+        className="relative z-10 px-6 md:px-12 py-12 max-w-6xl mx-auto text-center space-y-6"
         initial={{ opacity: 0, scale: 0.95, y: 60 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -78,11 +92,11 @@ to-[#0E93F3] text-white relative overflow-hidden"
         </div>
       </motion.div>
 
-      {/* Background image */}
+      {/* Footer decorative image */}
       <img
-        src="/bg/footer.png"
+        src="/footer/footer.png"
         alt="footer"
-        className="absolute bottom-[-5px] w-full z-0 pointer-events-none"
+        className="absolute bottom-0 w-full z-0 pointer-events-none"
       />
     </div>
   );

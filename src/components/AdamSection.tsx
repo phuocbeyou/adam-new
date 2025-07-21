@@ -221,9 +221,6 @@ const AdamSection = () => {
     setIsHovering(false);
   };
 
-  const activeContent =
-    contentData.find((s) => s.id === activeSection) || contentData[0];
-
   return (
     <div className="relative overflow-hidden" ref={sectionRef}>
       {/* Background Effects */}
@@ -234,7 +231,7 @@ const AdamSection = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between mb-12 lg:mb-16 gap-6 lg:gap-12">
           {/* Left Column - Animated */}
           <motion.div
-            className="lg:w-1/3 space-y-10 lg:space-y-30"
+            className="lg:w-1/3 space-y-10 lg:space-y-20"
             onMouseLeave={handleMouseLeave}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -249,7 +246,7 @@ const AdamSection = () => {
               isActive={activeSection === "why-adam"}
             />
 
-            <div className="space-y-4 lg:space-y-20 text-lg">
+            <div className="space-y-10 lg:space-y-20 text-lg">
               <AnimatedTitle
                 as="h2"
                 text="Mission"
@@ -301,25 +298,27 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="space-y-12 text-white text-base sm:text-lg leading-relaxed max-h-[480px] overflow-y-auto pr-4">
-                        <p>
+                      <div className="space-y-12 text-white text-base tracking-normal sm:text-lg max-h-[480px] overflow-y-auto pr-4">
+                        <p className="leading-[40px]">
                           $ADAM - a meme that gives back - where every action of
                           $ADAM (stake, vote, or hold) helps fund real-world
                           impact
                         </p>
-                        <p className="pl-4 neuemachina">
-                          - A memecoin that commits to people - not just pump
-                          and dump
-                        </p>
-                        <p className="pl-4 neuemachina">
-                          - A memecoin where giving is embedded in the code
-                        </p>
-                        <p className="pl-4 neuemachina">
-                          - A memecoin with meaning into the missions for
-                          spreading out the love for better world, and
-                          transactions into transformation
-                        </p>
-                        <p>
+                        <div className="leading-[40px]">
+                          <p className="">
+                            - A memecoin that commits to people - not just pump
+                            and dump
+                          </p>
+                          <p className="">
+                            - A memecoin where giving is embedded in the code
+                          </p>
+                          <p className="">
+                            - A memecoin with meaning into the missions for
+                            spreading out the love for better world, and
+                            transactions into transformation
+                          </p>
+                        </div>
+                        <p className="leading-[40px]">
                           Whether you&apos;re a developer, a dreamer, or a donor
                           - $ADAM give everyone a way to do good, transparently
                           and collectively, without needing a foundation, fame,
@@ -339,7 +338,7 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="space-y-8 text-white text-base sm:text-lg leading-relaxed max-h-[480px] overflow-y-auto pr-4">
+                      <div className="space-y-8 text-white leading-[30px] text-base sm:text-lg max-h-[480px] overflow-y-auto pr-4">
                         <p>
                           To awaken a new standard in Web3 where every $ADAM
                           transaction is not just a trade, but a conscious act
@@ -378,7 +377,7 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="text-white text-base sm:text-lg leading-relaxed max-h-[600px]">
+                      <div className="text-white text-base sm:text-lg leading-[25px] max-h-[600px] tracking-wider">
                         <p>
                           We envision a world where technology is no longer just
                           a tool for efficiency, but a vessel for healing,
@@ -456,9 +455,9 @@ const AdamSection = () => {
             >
               <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                 <img
-                  src="./icon/shield-security.svg"
+                  src="./icon/layer_1.svg"
                   alt="Stake"
-                  className="w-16 h-16 sm:w-20 sm:h-20 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-20 h-20 sm:w-24 sm:h-24 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
@@ -489,9 +488,9 @@ const AdamSection = () => {
             >
               <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                 <img
-                  src="./icon/mint-hammer.svg"
+                  src="./icon/vote-icon.svg"
                   alt="Vote"
-                  className="w-16 h-16 sm:w-20 sm:h-20 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-20 h-20 sm:w-24 sm:h-24 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
@@ -521,9 +520,9 @@ const AdamSection = () => {
             >
               <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                 <img
-                  src="./icon/decentralize.svg"
+                  src="./icon/dao-icon.svg"
                   alt="Everyone Can DAO"
-                  className="w-16 h-16 sm:w-20 sm:h-20 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-20 h-20 sm:w-24 sm:h-24 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
@@ -554,9 +553,9 @@ const AdamSection = () => {
             >
               <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                 <img
-                  src="./icon/money-bag.svg"
+                  src="./icon/money-hold.svg"
                   alt="HODL"
-                  className="w-16 h-16 sm:w-20 sm:h-20 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-20 h-20 sm:w-24 sm:h-24 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">

@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
 export const Scrolling = ({
-  text = "Let every $ADAM be a prayer for the betterworld",
+  text = "Let every $ADAM be a prayer for the better world",
   speed = 50, // Lower = slower scroll
   backgroundColor = "#000000",
   textColor = "#FFFFFF",

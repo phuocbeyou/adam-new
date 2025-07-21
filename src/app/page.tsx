@@ -9,7 +9,7 @@ import RoadmapComponent from "@/components/RoadMap";
 export default function Home() {
   return (
     <div className="">
-      <div className="min-h-screen relative overflow-hidden scroll-section">
+      <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section">
         {/* Video Background */}
         <video
           autoPlay
@@ -34,20 +34,15 @@ export default function Home() {
       </div>
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section">
         {/* Video Background */}
-        {/* <video
+        <video
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-auto object-cover"
         >
-          <source src="/bg/bg-2-test.mp4" type="video/mp4" />
-        </video> */}
-        <img
-          src="/bg/bg-4.png"
-          alt=""
-          className="absolute inset-0 w-full h-auto object-cover"
-        />
+          <source src="/bg/section3.mp4" type="video/mp4" />
+        </video>
         <div className="relative z-10">
           <div id="adamnomic">
             <AdamSection />
@@ -71,7 +66,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="">
+      <div className="min-w-screen overflow-hidden scroll-section">
         <Footer />
       </div>
     </div>
