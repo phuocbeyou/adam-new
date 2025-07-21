@@ -455,7 +455,7 @@ const AdamSection = () => {
             >
               <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
                 <img
-                  src="./icon/layer_1.svg"
+                  src="./icon/Layer_1.svg"
                   alt="Stake"
                   className="w-20 h-20 sm:w-24 sm:h-24 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
