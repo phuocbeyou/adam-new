@@ -81,9 +81,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
                 display: "inline-block",
                 whiteSpace: char === " " ? "pre" : "normal",
               }}
-            >
-              {char}
-            </motion.span>
+            ></motion.span>
           )
         )}
     </motion.span>
