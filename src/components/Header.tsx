@@ -36,7 +36,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-25">
+            <nav className="hidden md:flex items-center space-x-20">
               <button
                 onClick={() => scrollToSection("home")}
                 className="text-white hover:text-gray-900 font-medium transition-colors cursor-pointer"
@@ -50,10 +50,16 @@ export default function Header() {
                 ABOUT
               </button>
               <button
+                onClick={() => scrollToSection("utility")}
+                className="text-white hover:text-gray-900 font-medium transition-colors cursor-pointer"
+              >
+                UTILITY
+              </button>
+              <button
                 onClick={() => scrollToSection("adamnomic")}
                 className="text-white hover:text-gray-900 font-medium transition-colors cursor-pointer"
               >
-                ADAMNOMIC
+                KARMA POOL
               </button>
               <button
                 onClick={() => scrollToSection("roadmap")}

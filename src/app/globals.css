@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+* {
+  scroll-behavior: smooth;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -35,7 +37,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "NeueMachina";
-  scroll-behavior: smooth;
 }
 .neuemachina {
   font-family: "NeueMachina";
@@ -49,15 +50,15 @@ body {
 /* Float animation keyframes */
 @keyframes float {
   0% {
-    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
     transform: translatey(0px);
   }
   50% {
-    box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
     transform: translatey(-20px);
   }
   100% {
-    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
     transform: translatey(0px);
   }
 }

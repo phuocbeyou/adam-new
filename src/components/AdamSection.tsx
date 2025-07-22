@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/button.css";
 import HeartFunds from "./HeartFunds";
+import "../styles/style.css";
 
 const contentData = [
   {
@@ -125,7 +126,7 @@ const AnimatedTitle = ({
         isActive
           ? "text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#198DF3] bg-clip-text"
           : "text-white"
-      } transition-all duration-300 transform hover:scale-105 cursor-default`}
+      } transition-all duration-500 transform hover:scale-105 cursor`}
       onMouseEnter={onMouseEnter}
     >
       <motion.span
@@ -169,7 +170,10 @@ const AdamSection = () => {
       setActiveSection((prevId) => {
         const currentIndex = contentData.findIndex((s) => s.id === prevId);
         const nextIndex = (currentIndex + 1) % contentData.length;
-        return contentData[nextIndex].id;
+        if (contentData[nextIndex].id !== prevId) {
+          return contentData[nextIndex].id;
+        }
+        return prevId;
       });
     }, 7000);
 
@@ -215,7 +219,9 @@ const AdamSection = () => {
 
   const handleMouseEnter = (id: string) => {
     setIsHovering(true);
-    setActiveSection(id);
+    if (activeSection !== id) {
+      setActiveSection(id);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -274,20 +280,8 @@ const AdamSection = () => {
             transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
           >
             <div className="relative group">
-              {/* Background Rectangle - Mobile Responsive */}
-              <div
-                className="absolute inset-0 z-10 transition-all duration-500 group-hover:scale-105"
-                style={{
-                  backgroundImage: "url('/bg/Rectangle 44.png')",
-                  backgroundSize: "95% 95%",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  borderRadius: "20px",
-                }}
-              />
-
               {/* Content container - Responsive Height */}
-              <div className="relative bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-2xl sm:rounded-3xl lg:rounded-4xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF] h-[400px] sm:h-[500px] lg:h-[600px] flex items-center p-3 sm:p-4 lg:p-12">
+              <div className="bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-2xl sm:rounded-3xl lg:rounded-4xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF] h-[400px] sm:h-[500px] lg:h-[600px] flex items-center p-3 sm:p-4 lg:p-12">
                 <AnimatePresence mode="wait">
                   {/* WHY $ADAM? Content */}
                   {activeSection === "why-adam" && (
@@ -297,7 +291,7 @@ const AdamSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="w-full"
+                      className="w-full z-10"
                     >
                       <div className="space-y-4 sm:space-y-6 lg:space-y-12 text-white text-xs sm:text-sm lg:text-base xl:text-lg tracking-normal max-h-[320px] sm:max-h-[420px] lg:max-h-[480px] overflow-y-auto pr-2 sm:pr-4">
                         <p className="leading-[20px] sm:leading-[30px] lg:leading-[50px]">
@@ -306,7 +300,7 @@ const AdamSection = () => {
                           impact
                         </p>
                         <div className="leading-[16px] sm:leading-[24px] lg:leading-[40px]">
-                          <p className="mb-2">
+                          <p className="mb-2 ">
                             - A memecoin that commits to people - not just pump
                             and dump
                           </p>
@@ -337,7 +331,7 @@ const AdamSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="w-full"
+                      className="w-full z-10"
                     >
                       <div className="space-y-3 sm:space-y-4 lg:space-y-8 text-white leading-[16px] sm:leading-[20px] lg:leading-[30px] text-xs sm:text-sm lg:text-base xl:text-lg max-h-[320px] sm:max-h-[420px] lg:max-h-[480px] overflow-y-auto pr-2 sm:pr-4">
                         <p>
@@ -376,7 +370,7 @@ const AdamSection = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
-                      className="w-full"
+                      className="w-full z-10"
                     >
                       <div className="text-white text-xs sm:text-sm lg:text-base xl:text-lg leading-[14px] sm:leading-[18px] lg:leading-[25px] max-h-[320px] sm:max-h-[420px] lg:max-h-[600px] tracking-wider">
                         <p className="mb-2 sm:mb-3">
@@ -415,6 +409,10 @@ const AdamSection = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+                {/* Background Rectangle - Mobile Responsive */}
+                <div className="box absolute z-1 inset-0 flex items-center justify-center top-4 left-4">
+                  {/* Nội dung bên trong nếu cần giữ lại */}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -448,7 +446,7 @@ const AdamSection = () => {
           </h2>
 
           {/* Feature Boxes - Mobile Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2 lg:gap-3 xl:gap-4 w-full max-w-5xl mx-auto px-2 sm:px-4 lg:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2 lg:gap-3 xl:gap-4 w-full max-w-8xl px-2 sm:px-4 lg:px-2">
             {/* BOX 1 - STAKE */}
             <motion.div
               className="group flex flex-col items-center"
@@ -502,11 +500,11 @@ const AdamSection = () => {
                 Vote
               </h3>
               <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
-                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
-                     Shape collective decisions and fund meaningful missions.
-                   </p>
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
+                <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                    Shape collective decisions and fund meaningful missions.
+                  </p>
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     Each vote includes a micro-fee that contributes directly to
                     the Karma Pool — every click becomes a small act of giving.
                   </p>
@@ -534,12 +532,12 @@ const AdamSection = () => {
                 Everyone Can DAO
               </h3>
               <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
-                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
-                     Launch your own donation-based micro-DAO using $ADAM,
-                     stablecoins, or $SOL.
-                   </p>
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
+                <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                    Launch your own donation-based micro-DAO using $ADAM,
+                    stablecoins, or $SOL.
+                  </p>
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     DAO activity helps determine monthly reward distribution
                     from the Karma Pool — transparency with purpose.
                   </p>
@@ -567,12 +565,12 @@ const AdamSection = () => {
                 HODL
               </h3>
               <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
-                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
-                     Hold with intention to access future tools, perks, and
-                     airdrops.
-                   </p>
-                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
+                <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                    Hold with intention to access future tools, perks, and
+                    airdrops.
+                  </p>
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     1–2% of transaction fees are routed into the Karma Pool —
                     doing good simply by holding
                   </p>

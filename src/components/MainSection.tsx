@@ -255,7 +255,7 @@ export default function MainSection() {
             </div>
 
             <div
-              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-20 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${
+              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-10 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${
                 showText
                   ? "opacity-100 transform translate-y-0"
                   : "opacity-0 transform translate-y-10"
@@ -263,16 +263,16 @@ export default function MainSection() {
               style={{ animationDelay: "0.8s" }}
             >
               <div className="text-center lg:text-right">
-                <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:mb-10">
+                <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:mb-20 lg:ml-50">
                   Meme from Myth
                 </h2>
-                <p className="text-base sm:text-xl lg:text-2xl font-bold text-white mr-20">
+                <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:mr-30">
                   LET EVERY $ADAM
                 </p>
               </div>
 
               <div className="text-center lg:text-left">
-                <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-10">
+                <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
                   Built for Humanity.
                 </h2>
                 <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20">

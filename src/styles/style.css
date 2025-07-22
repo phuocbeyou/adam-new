@@ -1,0 +1,45 @@
+.box {
+  width: 95%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Viền xoay bằng pseudo-element */
+.box::before {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 77, 244, 0) 30%,
+    rgba(0, 77, 244, 0.4) 42%,
+    rgba(0, 77, 244, 1) 50%,
+    rgba(38, 221, 255, 1) 100%,
+    rgba(38, 221, 255, 0) 95%
+  );
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+  transform-origin: center center;
+}
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background-color: #102644;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

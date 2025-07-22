@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
+import "../styles/style.css";
 const RoadmapComponent = () => {
   const phases = [
     {
@@ -111,34 +111,29 @@ const RoadmapComponent = () => {
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
               >
-                <div
-                  className="absolute inset-0 z-10"
-                  style={{
-                    backgroundImage: "url('/bg/Rectangle 44.png')",
-                    backgroundSize: "95% 95%",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    borderRadius: "20px",
-                  }}
-                />
+                <div className="box absolute inset-0 z-10 flex items-center justify-center top-2 left-3">
+                  {/* Nội dung bên trong nếu cần giữ lại */}
+                </div>
                 <div
                   className="bg-[#102644] border-2 border-blue-400 rounded-2xl p-6 relative"
                   style={{
-                    boxShadow:
-                      "0 0 25px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.2)",
+                    boxShadow: `
+                      0 0 25px 10px rgba(255, 255, 255, 0.4),       
+                      0 0 50px 20px rgba(255, 255, 255, 0.2)        
+                    `,
                   }}
                 >
-                  <h3 className="text-white font-bold text-xl mb-4 text-center">
+                  <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">
                     {phase.title}
                   </h3>
                   <div className="space-y-3">
                     {phase.items.map((item, itemIndex) => (
                       <div
                         key={itemIndex}
-                        className="flex items-start gap-3 text-white text-sm leading-relaxed hover:text-gray-200 transition-colors duration-200"
+                        className="flex z-100 items-start gap-3 text-white text-sm leading-relaxed hover:text-gray-200 transition-colors duration-200"
                       >
                         <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                        <p>{item}</p>
+                        <p className="z-100">{item}</p>
                       </div>
                     ))}
                   </div>

@@ -34,7 +34,7 @@ export default function Home() {
       </div>
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section">
         {/* Video Background */}
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -42,7 +42,12 @@ export default function Home() {
           className="absolute inset-0 w-full h-auto object-cover"
         >
           <source src="/bg/section3.mp4" type="video/mp4" />
-        </video>
+        </video> */}
+        <img
+          src="/bg/section.png"
+          alt=""
+          className="absolute inset-0 w-full h-auto object-cover"
+        />
         <div className="relative z-10">
           <div id="adamnomic">
             <AdamSection />
