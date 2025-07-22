@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-import React, { useRef, useEffect, useState } from "react";
+"use client"
+import { useRef, useEffect, useState } from "react"
+import { motion } from "framer-motion" // Import motion
 
 export const Scrolling = ({
   text = "Let every $ADAM be a prayer for the better world",
@@ -9,20 +10,16 @@ export const Scrolling = ({
   textColor = "#FFFFFF",
   fontSize = "14px",
 }) => {
-  const textRef = useRef(null);
-  const [textWidth, setTextWidth] = useState(0);
+  const textContentRef = useRef<HTMLSpanElement>(null)
+  const [singleTextWidth, setSingleTextWidth] = useState(0)
 
   useEffect(() => {
-    if (
-      textRef.current &&
-      typeof textRef.current === "object" &&
-      "offsetWidth" in textRef.current
-    ) {
-      setTextWidth((textRef.current as HTMLElement).offsetWidth);
+    if (textContentRef.current) {
+      setSingleTextWidth(textContentRef.current.offsetWidth)
     }
-  }, [text]);
+  }, [text])
 
-  const animationDuration = textWidth > 0 ? (textWidth / speed).toFixed(2) : 0;
+  const animationDuration = singleTextWidth > 0 ? singleTextWidth / speed : 0
 
   return (
     <div
@@ -35,102 +32,73 @@ export const Scrolling = ({
         whiteSpace: "nowrap",
       }}
     >
-      <div
+      <motion.div
+        className="flex"
         style={{
-          display: "flex",
           width: "fit-content",
-          animation: `scroll ${animationDuration}s linear infinite`,
+        }}
+        animate={{ x: -singleTextWidth }}
+        transition={{
+          duration: animationDuration,
+          ease: "linear",
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "loop",
         }}
       >
-        {/* Lặp lại đoạn text nhiều lần để đảm bảo luôn liền mạch */}
-        <div
-          ref={textRef}
+        <span
+          ref={textContentRef}
           style={{
-            display: "flex",
+            paddingRight: "8rem", // Increased spacing
             color: textColor,
             fontSize,
             fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
           }}
         >
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-        </div>
-        {/* Bản sao giúp vòng lặp mượt */}
-        <div
+          <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" /> {text}
+        </span>
+        <span
           style={{
-            display: "flex",
+            paddingRight: "8rem", // Increased spacing
             color: textColor,
             fontSize,
             fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
           }}
         >
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-          <span
-            style={{ paddingRight: "2rem" }}
-            className="flex items-center gap-2"
-          >
-            <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" />{" "}
-            {text}
-          </span>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-      `}</style>
+          <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" /> {text}
+        </span>
+        <span
+          style={{
+            paddingRight: "8rem", // Increased spacing
+            color: textColor,
+            fontSize,
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" /> {text}
+        </span>
+        <span
+          style={{
+            paddingRight: "8rem", // Increased spacing
+            color: textColor,
+            fontSize,
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <img src="/icon/lay.png" alt="Lay icon" className="w-5 h-5" /> {text}
+        </span>
+      </motion.div>
     </div>
-  );
-};
+  )
+}

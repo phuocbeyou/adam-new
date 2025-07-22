@@ -7,24 +7,25 @@ export default function HeartFunds() {
       className="relative w-full flex justify-center items-center"
       style={{ minHeight: 500 }}
     >
-      {/* Trái tim */}
-      <Image
-        src="/icon/Heart.svg"
-        alt="Heart"
-        width={450}
-        height={450}
-        className="absolute inset-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
-        priority
-      />
-      {/* Các nhánh quỹ */}
-      <Image
-        src="/icon/Group12.png"
-        alt="Funds"
-        width={800}
-        height={800}
-        className="absolute left-90 top-2/5 -translate-x-1/2 -translate-y-1/2 z-20 max-w-[900px]"
-        priority
-      />
+      <div className="relative w-[450px] h-[450px]">
+        {/* Trái tim */}
+        <Image
+          src="/icon/Heart.svg"
+          alt="Heart"
+          fill
+          className="object-contain z-10"
+          priority
+        />
+        {/* Các nhánh quỹ lớn hơn, phủ lên */}
+        <Image
+          src="/icon/Group12.png"
+          alt="Funds"
+          fill
+          className="object-contain z-20 scale-[1.8] -translate-y-14 -translate-x-2"
+          priority
+        />
+      </div>
+
     </div>
   );
 }

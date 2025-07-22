@@ -1,7 +1,6 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import "../styles/style.css";
+"use client"
+import { motion } from "framer-motion"
+
 const RoadmapComponent = () => {
   const phases = [
     {
@@ -54,18 +53,7 @@ const RoadmapComponent = () => {
         "From crypto-native to humanity-aligned: building a better world together",
       ],
     },
-  ];
-
-  const floatingAnimation = (delay = 0) => ({
-    y: ["0px", "-15px", "0px"],
-    transition: {
-      duration: 3, // Giảm từ 6s xuống 3s để nhanh hơn
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay,
-    },
-  });
-
+  ]
   return (
     <div className="relative">
       {/* Title */}
@@ -76,56 +64,85 @@ const RoadmapComponent = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <h1 className="text-6xl md:text-5xl p-2 font-bold text-white tracking-wider bg-white/10 backdrop-blur-xs">
+          {" "}
           ROADMAP
         </h1>
       </motion.div>
-
       {/* Zigzag Layout Container */}
       <div className="max-w-7xl mx-auto px-8 py-8 space-y-24">
         {phases.map((phase, index) => {
-          const isLeft = index % 2 === 0;
-
+          const isLeft = index % 2 === 0
           return (
             <motion.div
               key={phase.id}
               className={`flex ${isLeft ? "justify-start" : "justify-end"}`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              // Floating animation: moves up and down
+              animate={{ y: [0, -10, 0] }} // Keyframes for floating effect
+              transition={{
+                duration: 5, // Increased duration for a slower, more "drifting" feel
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "mirror", // Makes the animation go back and forth smoothly
+                ease: "easeInOut",
+                delay: index * 0.3, // Stagger the animation start for each card
+              }}
             >
-              <motion.div
-                className="w-full max-w-xl relative"
-                animate={{
-                  y: ["0px", "-15px", "0px"],
-                  transition: {
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut" as const,
-                    delay: index * 0.3,
-                  },
-                }} // Giảm delay từ 0.5 xuống 0.3
-                whileHover={{
-                  y: 0,
-                  scale: 1.05, // Zoom out 5% khi hover
-                  transition: { duration: 0.3, ease: "easeOut" },
-                }}
-              >
-                <div className="box absolute inset-0 z-10 flex items-center justify-center top-2 left-3">
-                  {/* Nội dung bên trong nếu cần giữ lại */}
-                </div>
-                <div
-                  className="bg-[#102644] border-2 border-blue-400 rounded-2xl p-6 relative"
+              <div className="w-full max-w-xl relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.7)]">
+                {/* First Rotating Gradient Layer (Clockwise) */}
+                <motion.div
+                  className="absolute z-0 will-change-transform"
                   style={{
-                    boxShadow: `
-                      0 0 25px 10px rgba(255, 255, 255, 0.4),       
-                      0 0 50px 20px rgba(255, 255, 255, 0.2)        
-                    `,
+                    width: "200%",
+                    height: "200%",
+                    top: "-50%",
+                    left: "-50%",
+                    background: `linear-gradient(
+                    0deg,
+                    rgba(0, 77, 244, 0) 30%,
+                    rgba(0, 77, 244, 0.4) 42%,
+                    rgba(0, 77, 244, 1) 50%,
+                    rgba(38, 221, 255, 1) 100%,
+                    rgba(38, 221, 255, 0) 95%
+                  )`,
+                    transformOrigin: "center center",
                   }}
-                >
-                  <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">
-                    {phase.title}
-                  </h3>
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 15, // Increased duration for smoother animation
+                    ease: "linear",
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                {/* Second Rotating Gradient Layer (Counter-Clockwise) */}
+                <motion.div
+                  className="absolute z-0 will-change-transform"
+                  style={{
+                    width: "200%",
+                    height: "200%",
+                    top: "-50%",
+                    left: "-50%",
+                    background: `linear-gradient(
+                    180deg, /* Changed angle for visual distinction */
+                    rgba(0, 77, 244, 0) 30%,
+                    rgba(0, 77, 244, 0.4) 42%,
+                    rgba(0, 77, 244, 1) 50%,
+                    rgba(38, 221, 255, 1) 100%,
+                    rgba(38, 221, 255, 0) 95%
+                  )`,
+                    transformOrigin: "center center",
+                  }}
+                  animate={{ rotate: -360 }} /* Rotate in opposite direction */
+                  transition={{
+                    duration: 15, // Increased duration for smoother animation
+                    ease: "linear",
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                {/* Inner Dark Background Layer */}
+                <div className="absolute inset-[3px] bg-[#102644] rounded-[16px] z-10" />
+                {/* Content Layer */}
+                <div className="relative z-20 p-6">
+                  <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">{phase.title}</h3>
                   <div className="space-y-3">
                     {phase.items.map((item, itemIndex) => (
                       <div
@@ -138,19 +155,12 @@ const RoadmapComponent = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
-          );
+          )
         })}
       </div>
-
-      <style jsx>{`
-        .shadow-lg {
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 2);
-        }
-      `}</style>
     </div>
-  );
-};
-
-export default RoadmapComponent;
+  )
+}
+export default RoadmapComponent
