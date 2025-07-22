@@ -23,7 +23,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.06,
+        staggerChildren: 0.02,
       },
     },
   };
@@ -33,7 +33,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.5, ease: "easeInOut" as const },
+      transition: { duration: 0.3, ease: "easeInOut" as const },
     },
   };
 
@@ -116,14 +116,11 @@ export default function MainSection() {
         });
       },
       {
-        // Giảm threshold để kích hoạt sớm hơn
         threshold: 0.05,
-        // Giảm rootMargin để animation bắt đầu sớm hơn
         rootMargin: "-20px 0px -20px 0px",
       }
     );
 
-    // Observe elements after component mounts
     const elementsToObserve = document.querySelectorAll("[data-animate]");
     elementsToObserve.forEach((el) => observer.observe(el));
 
@@ -138,15 +135,12 @@ export default function MainSection() {
         const aboutRect = aboutSection.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        // Tính toán khi nào about section bắt đầu xuất hiện trên màn hình
-        const aboutIsVisible = aboutRect.top < windowHeight * 0.8; // 80% của viewport
+        const aboutIsVisible = aboutRect.top < windowHeight * 0.8;
 
         if (aboutIsVisible) {
-          // Khi about section hiện lên, ẩn hero Adam và hiện about Adam
           setHeroAdamVisible(false);
           setAboutAdamVisible(true);
         } else {
-          // Khi about section không hiện, hiện hero Adam và ẩn about Adam
           setHeroAdamVisible(true);
           setAboutAdamVisible(false);
         }
@@ -154,14 +148,12 @@ export default function MainSection() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Gọi một lần để check vị trí ban đầu
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    // Initial hero animations
     setShowText(true);
 
     const timer = setTimeout(() => {
@@ -177,7 +169,6 @@ export default function MainSection() {
         {/* Hero Section */}
         <section id="home" className="mb-8" data-animate="hero">
           <div className="text-center relative">
-            {/* Main Title with Animation */}
             <h1
               className={`text-6xl lg:text-8xl font-bold xl:text-[200px] text-white mb-8 lg:mb-12 transition-all duration-2000 ${
                 showText
@@ -217,7 +208,6 @@ export default function MainSection() {
               </span>
             </h1>
 
-            {/* Central Adam Figure with Animation and Hover Effects */}
             <div
               className={`relative flex justify-center items-center mb-8 lg:mb-12 transition-all duration-1000 ${
                 showAdam && heroAdamVisible
@@ -237,7 +227,6 @@ export default function MainSection() {
               </div>
             </div>
 
-            {/* Taglines with Animation */}
             <div
               className={`absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-50 transition-all duration-1500 ${
                 showText
@@ -247,19 +236,19 @@ export default function MainSection() {
               style={{ animationDelay: "0.8s" }}
             >
               <div className="text-left lg:text-right">
-                <h2 className="text-lg lg:text-xl font-bold  text-white mr-50 mb-10">
+                <h2 className="text-lg lg:text-xl font-bold text-white mr-50 mb-10">
                   Meme from Myth
                 </h2>
-                <p className="text-xl lg:text-2xl font-bold  text-white mr-20">
+                <p className="text-xl lg:text-2xl font-bold text-white mr-20">
                   LET EVERY $ADAM
                 </p>
               </div>
 
               <div className="text-left">
-                <h2 className="text-lg lg:text-xl font-bold  text-white ml-50  mb-10">
+                <h2 className="text-lg lg:text-xl font-bold text-white ml-50 mb-10">
                   Built for Humanity.
                 </h2>
-                <p className="text-xl lg:text-2xl font-bold  text-white ml-20">
+                <p className="text-xl lg:text-2xl font-bold text-white ml-20">
                   BE A PRAYER FOR A BETTER WORLD
                 </p>
               </div>
@@ -286,50 +275,49 @@ export default function MainSection() {
               </div>
               <p
                 className="text-lg lg:text-sm animate-fade-up font-bold"
-                style={{ animationDelay: "1.2s" }}
+                style={{ animationDelay: "0.05s" }}
               >
                 <AnimateLetters text="Meme from Myth. Built for Humanity." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up font-bold "
-                style={{ animationDelay: "1.4s" }}
+                className="text-base lg:text-sm animate-fade-up font-bold"
+                style={{ animationDelay: "0.08s" }}
               >
                 <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up font-bold "
-                style={{ animationDelay: "1.6s" }}
+                className="text-base lg:text-sm animate-fade-up font-bold"
+                style={{ animationDelay: "0.11s" }}
               >
                 <AnimateLetters text="Now reborn as a meme coin for a new digital age – not to rule, but to remind us:" />
               </p>
 
               <p
-                className="text-lg lg:text-sm animate-fade-up font-bold "
-                style={{ animationDelay: "1.8s" }}
+                className="text-lg lg:text-sm animate-fade-up font-bold"
+                style={{ animationDelay: "0.14s" }}
               >
                 <AnimateLetters text="PNL isn't what you hold, it's what you give." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up font-bold "
-                style={{ animationDelay: "2.0s" }}
+                className="text-base lg:text-sm animate-fade-up font-bold"
+                style={{ animationDelay: "0.17s" }}
               >
                 <AnimateLetters text="Every stake is a belief. Every meme, a chance to support a better world." />
               </p>
 
               <p
-                className="text-base lg:text-sm animate-fade-up font-bold "
-                style={{ animationDelay: "2.2s" }}
+                className="text-base lg:text-sm animate-fade-up font-bold"
+                style={{ animationDelay: "0.2s" }}
               >
                 <AnimateLetters text="This is the meme with meaning — and $ADAM is where it begins." />
               </p>
 
-              {/* Solana Address */}
               <div
                 className="mt-6 lg:mt-8 animate-fade-up font-bold"
-                style={{ animationDelay: "2.4s" }}
+                style={{ animationDelay: "0.23s" }}
               >
                 <div className="inline-flex items-center gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-6 py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <img
@@ -361,7 +349,6 @@ export default function MainSection() {
               </div>
             </div>
 
-            {/* About Adam Character với animation mượt mà hơn và hiệu ứng scroll */}
             <div
               className={`flex justify-center items-center transition-all duration-1000 ease-in-out ${
                 aboutAdamVisible && visibleElements.aboutAdam
@@ -384,7 +371,6 @@ export default function MainSection() {
         </section>
       </div>
 
-      {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes fade-in-up {
           0% {
@@ -441,7 +427,7 @@ export default function MainSection() {
         }
 
         .animate-fade-up {
-          animation: fade-in-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          animation: fade-in-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
             forwards;
           opacity: 0;
         }
@@ -450,14 +436,12 @@ export default function MainSection() {
           transition-duration: 2500ms;
         }
 
-        /* Adam Character Hover Effects - Slower and Smoother */
         .adam-character {
           position: relative;
         }
 
         .adam-character img {
           animation: float 3s ease-in-out infinite;
-          /* Transition mượt mà hơn */
           transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform-origin: center bottom;
           filter: brightness(1) drop-shadow(0 0 0px #fff);
@@ -466,20 +450,17 @@ export default function MainSection() {
         .adam-character:hover img {
           animation: float 1.5s ease-in-out infinite;
           transform: scale(1.15);
-          /* Hiệu ứng glow mềm mại hơn */
           filter: brightness(1.3) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8))
             drop-shadow(0 0 60px rgba(52, 153, 255, 0.6));
           box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.3);
         }
 
-        /* About Section Adam Character với transition chậm hơn */
         .adam-character-about {
           position: relative;
         }
 
         .adam-character-about img {
           animation: float 4s ease-in-out infinite;
-          /* Transition rất mượt mà */
           transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform-origin: center bottom;
           filter: brightness(1) drop-shadow(0 0 0px #fff);
@@ -488,24 +469,20 @@ export default function MainSection() {
         .adam-character-about:hover img {
           animation: float 2s ease-in-out infinite;
           transform: scale(1.15);
-          /* Hiệu ứng glow mềm mại */
           filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 255, 255, 0.7))
             drop-shadow(0 0 70px rgba(52, 153, 255, 0.5));
           box-shadow: 0 0 50px 12px rgba(255, 255, 255, 0.3),
             0 0 90px 18px rgba(52, 153, 255, 0.2);
         }
 
-        /* Scroll Animation Classes mượt mà hơn */
         .animate-on-scroll {
           transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Letter animations when visible */
         .animate-letter.visible {
           animation: letter-bounce 0.8s ease-out forwards;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
           .adam-character img,
           .adam-character-about img {

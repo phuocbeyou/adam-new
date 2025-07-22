@@ -35,6 +35,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "NeueMachina";
+  scroll-behavior: smooth;
 }
 .neuemachina {
   font-family: "NeueMachina";

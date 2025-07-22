@@ -140,7 +140,7 @@ const RoadmapComponent = () => {
                     {phase.items.map((item, itemIndex) => (
                       <div
                         key={itemIndex}
-                        className="flex items-start gap-3 text-gray-300 text-sm leading-relaxed hover:text-white transition-colors duration-200"
+                        className="flex items-start gap-3 text-white text-sm leading-relaxed hover:text-white transition-colors duration-200"
                       >
                         <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                         <p>{item}</p>
