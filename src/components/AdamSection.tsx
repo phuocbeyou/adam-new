@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/button.css";
 import HeartFunds from "./HeartFunds";
+
 const contentData = [
   {
     id: "why-adam",
@@ -170,7 +171,7 @@ const AdamSection = () => {
         const nextIndex = (currentIndex + 1) % contentData.length;
         return contentData[nextIndex].id;
       });
-    }, 7000); // 7 seconds loop
+    }, 7000);
 
     return () => {
       if (timerRef.current) {
@@ -181,7 +182,6 @@ const AdamSection = () => {
 
   const title = "WHAT YOU CAN DO WITH $ADAM?";
 
-  // Variants cho từng chữ
   const letterVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: {
@@ -195,7 +195,7 @@ const AdamSection = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.08, // thời gian delay giữa các chữ
+        staggerChildren: 0.08,
       },
     },
   };
@@ -208,7 +208,7 @@ const AdamSection = () => {
       transition: {
         duration: 1.2,
         ease: "easeInOut" as const,
-        delay: 0.2 + i * 0.25, // delay tăng dần cho từng box
+        delay: 0.2 + i * 0.25,
       },
     }),
   };
@@ -227,12 +227,12 @@ const AdamSection = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2260%22 height%3D%2260%22 viewBox%3D%220 0 60 60%22%3E%3Ccircle cx%3D%2230%22 cy%3D%2230%22 r%3D%222%22 fill%3D%22%23ffffff%22 fill-opacity%3D%220.03%22/%3E%3C/svg%3E')] opacity-20"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-16 py-12 lg:py-16 relative z-10">
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row items-center justify-between mb-12 lg:mb-16 gap-6 lg:gap-12">
-          {/* Left Column - Animated */}
+      <div className="container mx-auto px-3 sm:px-4 lg:px-16 py-8 sm:py-12 lg:py-16 relative z-10">
+        {/* Header Section - Mobile Optimized */}
+        <div className="flex flex-col lg:flex-row items-center justify-between mb-8 sm:mb-12 lg:mb-16 gap-4 sm:gap-6 lg:gap-12">
+          {/* Left Column - Titles */}
           <motion.div
-            className="lg:w-1/3 space-y-10 lg:space-y-25"
+            className="w-full lg:w-1/3 space-y-6 sm:space-y-8 lg:space-y-25"
             onMouseLeave={handleMouseLeave}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -242,39 +242,39 @@ const AdamSection = () => {
             <AnimatedTitle
               as="h1"
               text="Why $ADAM?"
-              className="text-3xl sm:text-4xl lg:text-5xl p-2 font-bold"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl p-1 sm:p-2 font-bold text-center lg:text-left"
               onMouseEnter={() => handleMouseEnter("why-adam")}
               isActive={activeSection === "why-adam"}
             />
 
-            <div className="space-y-10 lg:space-y-25 text-lg">
+            <div className="space-y-6 sm:space-y-8 lg:space-y-25">
               <AnimatedTitle
                 as="h2"
                 text="Mission"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold "
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-left"
                 onMouseEnter={() => handleMouseEnter("mission")}
                 isActive={activeSection === "mission"}
               />
               <AnimatedTitle
                 as="h2"
                 text="Vision"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center lg:text-left"
                 onMouseEnter={() => handleMouseEnter("vision")}
                 isActive={activeSection === "vision"}
               />
             </div>
           </motion.div>
 
-          {/* Right Column - Fixed Height Box with Centered Content */}
+          {/* Right Column - Content Box */}
           <motion.div
-            className="lg:w-2/3"
+            className="w-full lg:w-2/3"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
           >
             <div className="relative group">
-              {/* Rectangle 44 nằm song song với border xanh */}
+              {/* Background Rectangle - Mobile Responsive */}
               <div
                 className="absolute inset-0 z-10 transition-all duration-500 group-hover:scale-105"
                 style={{
@@ -286,10 +286,10 @@ const AdamSection = () => {
                 }}
               />
 
-              {/* Content container với border xanh - FIXED HEIGHT */}
-              <div className="relative bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-4xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF] h-[600px] flex items-center p-6 lg:p-12">
+              {/* Content container - Responsive Height */}
+              <div className="relative bg-[#102644] backdrop-blur-md border-2 border-[#3DBDF1] rounded-2xl sm:rounded-3xl lg:rounded-4xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:border-[#5DCDFF] h-[400px] sm:h-[500px] lg:h-[600px] flex items-center p-3 sm:p-4 lg:p-12">
                 <AnimatePresence mode="wait">
-                  {/* BOX 1: WHY $ADAM? */}
+                  {/* WHY $ADAM? Content */}
                   {activeSection === "why-adam" && (
                     <motion.div
                       key="why-adam"
@@ -299,18 +299,18 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="space-y-12 text-white text-base tracking-normal sm:text-lg max-h-[480px] overflow-y-auto pr-4">
-                        <p className="leading-[50px]">
+                      <div className="space-y-4 sm:space-y-6 lg:space-y-12 text-white text-xs sm:text-sm lg:text-base xl:text-lg tracking-normal max-h-[320px] sm:max-h-[420px] lg:max-h-[480px] overflow-y-auto pr-2 sm:pr-4">
+                        <p className="leading-[20px] sm:leading-[30px] lg:leading-[50px]">
                           $ADAM - a meme that gives back - where every action of
                           $ADAM (stake, vote, or hold) helps fund real-world
                           impact
                         </p>
-                        <div className="leading-[40px]">
-                          <p className="">
+                        <div className="leading-[16px] sm:leading-[24px] lg:leading-[40px]">
+                          <p className="mb-2">
                             - A memecoin that commits to people - not just pump
                             and dump
                           </p>
-                          <p className="">
+                          <p className="mb-2">
                             - A memecoin where giving is embedded in the code
                           </p>
                           <p className="">
@@ -319,7 +319,7 @@ const AdamSection = () => {
                             transactions into transformation
                           </p>
                         </div>
-                        <p className="leading-[40px]">
+                        <p className="leading-[16px] sm:leading-[24px] lg:leading-[40px]">
                           Whether you&apos;re a developer, a dreamer, or a donor
                           - $ADAM give everyone a way to do good, transparently
                           and collectively, without needing a foundation, fame,
@@ -329,7 +329,7 @@ const AdamSection = () => {
                     </motion.div>
                   )}
 
-                  {/* BOX 2: MISSION */}
+                  {/* MISSION Content */}
                   {activeSection === "mission" && (
                     <motion.div
                       key="mission"
@@ -339,7 +339,7 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="space-y-8 text-white leading-[30px] text-base sm:text-lg max-h-[480px] overflow-y-auto pr-4">
+                      <div className="space-y-3 sm:space-y-4 lg:space-y-8 text-white leading-[16px] sm:leading-[20px] lg:leading-[30px] text-xs sm:text-sm lg:text-base xl:text-lg max-h-[320px] sm:max-h-[420px] lg:max-h-[480px] overflow-y-auto pr-2 sm:pr-4">
                         <p>
                           To awaken a new standard in Web3 where every $ADAM
                           transaction is not just a trade, but a conscious act
@@ -368,7 +368,7 @@ const AdamSection = () => {
                     </motion.div>
                   )}
 
-                  {/* BOX 3: VISION */}
+                  {/* VISION Content */}
                   {activeSection === "vision" && (
                     <motion.div
                       key="vision"
@@ -378,28 +378,32 @@ const AdamSection = () => {
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="w-full"
                     >
-                      <div className="text-white text-base sm:text-lg leading-[25px] max-h-[600px] tracking-wider">
-                        <p>
+                      <div className="text-white text-xs sm:text-sm lg:text-base xl:text-lg leading-[14px] sm:leading-[18px] lg:leading-[25px] max-h-[320px] sm:max-h-[420px] lg:max-h-[600px] tracking-wider">
+                        <p className="mb-2 sm:mb-3">
                           We envision a world where technology is no longer just
                           a tool for efficiency, but a vessel for healing,
                           consciousness, and collective elevation.
                         </p>
-                        <p className="my-3">
+                        <p className="mb-2 sm:mb-3">
                           Where $ADAM is not merely meme, but sacred energies -
                           the masculine energy of trendsetting and leading the
                           world for a better existence, the 3D world of survival
                           to the realm of awakening, unity, and shared purpose
                           and spreadign the supports
                         </p>
-                        <p>
+                        <p className="mb-2 sm:mb-3">
                           In this future, blockchain becomes the new scripture
                           not just recording transactions, but encoding karma,
                           compassion, and collective will
                         </p>
-                        <p className="my-3">A decentralized world where:</p>
-                        <p className="">- Wealth is redefined as impact,</p>
-                        <p className="">- Value is measured by intention,</p>
-                        <p className="mb-3">
+                        <p className="mb-2 sm:mb-3">
+                          A decentralized world where:
+                        </p>
+                        <p className="mb-1">- Wealth is redefined as impact,</p>
+                        <p className="mb-1">
+                          - Value is measured by intention,
+                        </p>
+                        <p className="mb-2 sm:mb-3">
                           - And every action, stake, and vote helps as a weave
                           of a new contribution to a better place
                         </p>
@@ -416,10 +420,10 @@ const AdamSection = () => {
           </motion.div>
         </div>
 
-        {/* What You Can Do Section */}
-        <div className="my-40 lg:mb-16">
+        {/* What You Can Do Section - Mobile Optimized */}
+        <div className="my-16 sm:my-24 lg:my-40">
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl text-white mb-6 lg:mb-16 font-bold cursor-default flex justify-center"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white mb-8 sm:mb-12 lg:mb-16 font-bold cursor-default flex justify-center text-center px-2"
             data-animate-id="features-title"
           >
             <motion.span
@@ -427,7 +431,7 @@ const AdamSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.7 }}
-              className="inline-flex"
+              className="inline-flex flex-wrap justify-center"
             >
               {title.split("").map((char, i) => (
                 <motion.span
@@ -443,8 +447,8 @@ const AdamSection = () => {
             </motion.span>
           </h2>
 
-          {/* HARDCODED FEATURE BOXES - Bạn có thể chỉnh từng box riêng biệt */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {/* Feature Boxes - Mobile Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2 lg:gap-3 xl:gap-4 w-full max-w-5xl mx-auto px-2 sm:px-4 lg:px-6">
             {/* BOX 1 - STAKE */}
             <motion.div
               className="group flex flex-col items-center"
@@ -454,23 +458,23 @@ const AdamSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               custom={0}
             >
-              <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
+              <div className="transition-all duration-500 hover:scale-95">
                 <img
                   src="./icon/stake_icon.svg"
                   alt="Stake"
-                  className="w-20 h-20 sm:w-28 sm:h-28 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105 text-center">
                 Stake
               </h3>
-              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-xl p-2 sm:p-4 transition-all duration-500 hover:border-[#5DCDFF] hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 group-hover:-translate-y-2 h-[200px] flex items-center justify-center w-full shadow-2xl shadow-black/50">
-                <div className="flex flex-col items-center justify-center space-y-3 text-center px-2">
-                  <p className="text-[14px] text-white transition-all duration-300 group-hover:text-gray-100">
+              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
+                <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
                     Stake to earn yield, gain voting rights, and unlock DAO
                     creation.
                   </p>
-                  <p className="text-[14px] text-white transition-all duration-300 group-hover:text-gray-200">
+                  <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     A portion of staking rewards is automatically redirected
                     into the Karma Pool — turning belief into real-world impact.
                   </p>
@@ -487,22 +491,22 @@ const AdamSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               custom={1}
             >
-              <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
+              <div className="transition-all duration-500 hover:scale-95">
                 <img
                   src="./icon/vote_icon.svg"
                   alt="Vote"
-                  className="w-20 h-20 sm:w-28 sm:h-28 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105 text-center">
                 Vote
               </h3>
-              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-xl p-2 sm:p-4 transition-all duration-500 hover:border-[#5DCDFF] hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 group-hover:-translate-y-2 h-[200px] flex items-center justify-center w-full shadow-2xl shadow-black/50">
-                <div className="flex flex-col items-center justify-center space-y-3 text-center px-2">
-                  <p className="text-[14px] text-white transition-all duration-300 group-hover:text-gray-100">
-                    Shape collective decisions and fund meaningful missions.
-                  </p>
-                  <p className="text-[14px] text-white  transition-all duration-300 group-hover:text-gray-200">
+              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
+                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                     Shape collective decisions and fund meaningful missions.
+                   </p>
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     Each vote includes a micro-fee that contributes directly to
                     the Karma Pool — every click becomes a small act of giving.
                   </p>
@@ -519,23 +523,23 @@ const AdamSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               custom={2}
             >
-              <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
+              <div className="transition-all duration-500 hover:scale-95">
                 <img
                   src="./icon/dao-icon.svg"
                   alt="Everyone Can DAO"
-                  className="w-20 h-20 sm:w-28 sm:h-28 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105 text-center">
                 Everyone Can DAO
               </h3>
-              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-xl p-2 sm:p-4 transition-all duration-500 hover:border-[#5DCDFF] hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 group-hover:-translate-y-2 h-[200px] flex items-center justify-center w-full shadow-2xl shadow-black/50">
-                <div className="flex flex-col items-center justify-center space-y-3 text-center px-2">
-                  <p className="text-[14px] text-white  transition-all duration-300 group-hover:text-gray-100">
-                    Launch your own donation-based micro-DAO using $ADAM,
-                    stablecoins, or $SOL.
-                  </p>
-                  <p className="text-[14px] text-white transition-all duration-300 group-hover:text-gray-200">
+              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
+                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                     Launch your own donation-based micro-DAO using $ADAM,
+                     stablecoins, or $SOL.
+                   </p>
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     DAO activity helps determine monthly reward distribution
                     from the Karma Pool — transparency with purpose.
                   </p>
@@ -552,23 +556,23 @@ const AdamSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               custom={3}
             >
-              <div className="transition-all duration-500 hover:scale-110 hover:rotate-3">
+              <div className="transition-all duration-500 hover:scale-95">
                 <img
                   src="./icon/money-hold.svg"
                   alt="HODL"
-                  className="w-20 h-20 sm:w-28 sm:h-28 mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
+                  className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-all duration-500 group-hover:filter group-hover:brightness-125"
                 />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 transition-all duration-500 group-hover:text-[#3DBDF1] group-hover:scale-105 text-center">
                 HODL
               </h3>
-              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-xl p-2 sm:p-4 transition-all duration-500 hover:border-[#5DCDFF] hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 group-hover:-translate-y-2 h-[200px] flex items-center justify-center w-full shadow-2xl shadow-black/50">
-                <div className="flex flex-col items-center justify-center space-y-3 text-center px-2">
-                  <p className="text-[14px] text-white  transition-all duration-300 group-hover:text-gray-100">
-                    Hold with intention to access future tools, perks, and
-                    airdrops.
-                  </p>
-                  <p className="text-[14px] text-white  transition-all duration-300 group-hover:text-gray-200">
+              <div className="bg-[#021E32] backdrop-blur-md border-1 border-[#3DBDF1] rounded-lg sm:rounded-xl transition-all duration-500 hover:border-[#5DCDFF] hover:scale-95 hover:shadow-xl hover:shadow-blue-500/20 hover:bg-slate-700/60 float-animation h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] flex items-center justify-center w-full shadow-2xl shadow-black/50 p-1 sm:p-2 lg:p-3">
+                 <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-2 text-center px-1">
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-100 leading-tight">
+                     Hold with intention to access future tools, perks, and
+                     airdrops.
+                   </p>
+                   <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-[12px] text-white transition-all duration-300 group-hover:text-gray-200 leading-tight">
                     1–2% of transaction fees are routed into the Karma Pool —
                     doing good simply by holding
                   </p>
@@ -577,7 +581,6 @@ const AdamSection = () => {
             </motion.div>
           </div>
         </div>
-
         {/* Karma Pool Section */}
         <motion.div
           className="flex flex-col md:flex-row items-center justify-between gap-8"

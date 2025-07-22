@@ -56,70 +56,59 @@ const RoadmapComponent = () => {
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.2,
-        duration: 0.8,
-        ease: "easeInOut" as const,
-      },
-    }),
-  };
-
   const floatingAnimation = (delay = 0) => ({
     y: ["0px", "-15px", "0px"],
     transition: {
-      duration: 6,
+      duration: 3, // Giảm từ 6s xuống 3s để nhanh hơn
       repeat: Infinity,
-      ease: "easeInOut" as const,
+      ease: "easeInOut",
       delay,
     },
   });
 
   return (
-    <div className="">
+    <div className="relative">
       {/* Title */}
       <motion.div
-        className="relative z-20 text-center mb-16"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
-        <h1 className="text-6xl md:text-5xl p-2 font-bold text-white backdrop-blur-sm tracking-wider">
+        <h1 className="text-6xl md:text-5xl p-2 font-bold text-white tracking-wider bg-white/10 backdrop-blur-xs">
           ROADMAP
         </h1>
       </motion.div>
 
       {/* Zigzag Layout Container */}
-      <div className="relative z-15 max-w-7xl mx-auto px-8 py-8 space-y-24">
+      <div className="max-w-7xl mx-auto px-8 py-8 space-y-24">
         {phases.map((phase, index) => {
           const isLeft = index % 2 === 0;
-          const initialRotate = isLeft ? (index === 0 ? 0 : -5) : 5;
 
           return (
-            <div
+            <motion.div
               key={phase.id}
               className={`flex ${isLeft ? "justify-start" : "justify-end"}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <motion.div
                 className="w-full max-w-xl relative"
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.4 }}
-                custom={index}
                 animate={{
-                  ...floatingAnimation(index * 0.5),
-                  rotate: initialRotate,
-                }}
+                  y: ["0px", "-15px", "0px"],
+                  transition: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut" as const,
+                    delay: index * 0.3,
+                  },
+                }} // Giảm delay từ 0.5 xuống 0.3
                 whileHover={{
-                  scale: 0.98,
-                  rotate: 0,
                   y: 0,
-                  transition: { duration: 0.4 },
+                  scale: 1.05, // Zoom out 5% khi hover
+                  transition: { duration: 0.3, ease: "easeOut" },
                 }}
               >
                 <div
@@ -132,7 +121,13 @@ const RoadmapComponent = () => {
                     borderRadius: "20px",
                   }}
                 />
-                <div className="bg-[#102644] backdrop-blur-sm border-2 rounded-2xl p-6 relative glow">
+                <div
+                  className="bg-[#102644] border-2 border-blue-400 rounded-2xl p-6 relative"
+                  style={{
+                    boxShadow:
+                      "0 0 25px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.2)",
+                  }}
+                >
                   <h3 className="text-white font-bold text-xl mb-4 text-center">
                     {phase.title}
                   </h3>
@@ -140,7 +135,7 @@ const RoadmapComponent = () => {
                     {phase.items.map((item, itemIndex) => (
                       <div
                         key={itemIndex}
-                        className="flex items-start gap-3 text-white text-sm leading-relaxed hover:text-white transition-colors duration-200"
+                        className="flex items-start gap-3 text-white text-sm leading-relaxed hover:text-gray-200 transition-colors duration-200"
                       >
                         <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                         <p>{item}</p>
@@ -149,21 +144,14 @@ const RoadmapComponent = () => {
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
+
       <style jsx>{`
-        .glow {
-          border-color: #3dbdf1;
-          box-shadow: 0 0 10px rgba(61, 189, 241, 0.3),
-            0 0 20px rgba(61, 189, 241, 0.2);
-          transition: border-color 0.5s ease-out, box-shadow 0.5s ease-out;
-        }
-        .glow:hover {
-          border-color: #82e9ff;
-          box-shadow: 0 0 20px rgba(130, 233, 255, 0.8),
-            0 0 40px rgba(130, 233, 255, 0.6);
+        .shadow-lg {
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 2);
         }
       `}</style>
     </div>
