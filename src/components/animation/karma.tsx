@@ -153,7 +153,7 @@ export default function Karma() {
 
                         {/* Lines - animated to draw from dots with "running up" effect */}
                         <motion.path
-                            ref={(el) => (lineRefs.current[0] = el)}
+                            ref={(el) => { lineRefs.current[0] = el; }}
                             d="M482.993 26.876L514.343 83.8349C516.903 88.4866 517.5 93.9682 516 99.0619L497.643 161.42"
                             stroke="url(#paint13_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -167,7 +167,7 @@ export default function Karma() {
                             custom={0}
                         />
                         <motion.path
-                            ref={(el) => (lineRefs.current[1] = el)}
+                            ref={(el) => { lineRefs.current[1] = el; }}
                             d="M328.884 102.864L394.642 102.332C400.501 102.284 406.084 104.819 409.904 109.262L449.463 155.271"
                             stroke="url(#paint15_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -181,7 +181,7 @@ export default function Karma() {
                             custom={1}
                         />
                         <motion.path
-                            ref={(el) => (lineRefs.current[2] = el)}
+                            ref={(el) => { lineRefs.current[2] = el; }}
                             d="M273.573 176.575L392.844 176.575"
                             stroke="url(#paint17_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -195,7 +195,7 @@ export default function Karma() {
                             custom={2}
                         />
                         <motion.path
-                            ref={(el) => (lineRefs.current[3] = el)}
+                            ref={(el) => { lineRefs.current[3] = el; }}
                             d="M275.908 261.947L378.663 261.946C385.778 261.946 392.353 258.151 395.91 251.989L397.729 248.839"
                             stroke="url(#paint19_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -209,7 +209,7 @@ export default function Karma() {
                             custom={3}
                         />
                         <motion.path
-                            ref={(el) => (lineRefs.current[4] = el)}
+                            ref={(el) => { lineRefs.current[4] = el; }}
                             d="M644.886 102.816L605.886 154.232C602.191 159.103 596.464 162.007 590.35 162.109L544.267 162.876"
                             stroke="url(#paint21_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -223,7 +223,7 @@ export default function Karma() {
                             custom={4}
                         />
                         <motion.path
-                            ref={(el) => (lineRefs.current[5] = el)}
+                            ref={(el) => { lineRefs.current[5] = el; }}
                             d="M558.194 232.095L580.491 276.653C583.865 283.397 590.76 287.657 598.301 287.657L661.359 287.657"
                             stroke="url(#paint23_linear_6254_673)"
                             strokeWidth="0.995772"
@@ -239,7 +239,7 @@ export default function Karma() {
 
                         {/* Dots with animated strokes */}
                         <motion.path
-                            ref={(el) => (dotRefs.current[0] = el)}
+                            ref={(el) => { dotRefs.current[0] = el; }}
                             opacity="0.8"
                             d="M399.395 238.425C393.71 237.196 388.27 240.676 387.032 246.332C385.794 251.989 389.289 257.399 394.974 258.628C400.66 259.856 406.1 256.377 407.338 250.721C408.982 245.152 405.081 239.654 399.395 238.425Z"
                             stroke="url(#paint6_linear_6254_673)"
@@ -259,7 +259,7 @@ export default function Karma() {
                         />
 
                         <motion.path
-                            ref={(el) => (dotRefs.current[1] = el)}
+                            ref={(el) => { dotRefs.current[1] = el; }}
                             opacity="0.8"
                             d="M395.825 165.425C390.139 164.196 384.7 167.676 383.462 173.332C382.224 178.989 385.718 184.399 391.404 185.628C397.09 186.856 402.529 183.377 403.767 177.721C405.411 172.152 401.511 166.654 395.825 165.425Z"
                             stroke="url(#paint7_linear_6254_673)"
@@ -279,7 +279,7 @@ export default function Karma() {
                         />
 
                         <motion.path
-                            ref={(el) => (dotRefs.current[2] = el)}
+                            ref={(el) => { dotRefs.current[2] = el; }}
                             opacity="0.8"
                             d="M452.177 145.425C446.491 144.196 441.051 147.676 439.813 153.332C438.575 158.989 442.07 164.399 447.756 165.628C453.441 166.856 458.881 163.377 460.119 157.721C461.763 152.152 457.862 146.654 452.177 145.425Z"
                             stroke="url(#paint9_linear_6254_673)"
@@ -299,7 +299,7 @@ export default function Karma() {
                         />
 
                         <motion.path
-                            ref={(el) => (dotRefs.current[3] = el)}
+                            ref={(el) => { dotRefs.current[3] = el; }}
                             opacity="0.8"
                             d="M501.395 149.481C495.71 148.253 490.27 151.732 489.032 157.388C487.794 163.045 491.289 168.455 496.974 169.684C502.66 170.913 508.1 167.433 509.338 161.777C510.982 156.208 507.081 150.71 501.395 149.481Z"
                             stroke="url(#paint10_linear_6254_673)"
@@ -319,7 +319,7 @@ export default function Karma() {
                         />
 
                         <motion.path
-                            ref={(el) => (dotRefs.current[4] = el)}
+                            ref={(el) => { dotRefs.current[4] = el; }}
                             opacity="0.8"
                             d="M547.395 151.66C541.71 150.431 536.27 153.91 535.032 159.567C533.794 165.224 537.289 170.634 542.974 171.863C548.66 173.091 554.1 169.612 555.338 163.955C556.982 158.387 553.081 152.889 547.395 151.66Z"
                             stroke="url(#paint11_linear_6254_673)"
@@ -339,7 +339,7 @@ export default function Karma() {
                         />
 
                         <motion.path
-                            ref={(el) => (dotRefs.current[5] = el)}
+                            ref={(el) => { dotRefs.current[5] = el; }}
                             opacity="0.8"
                             d="M560.645 222.59C554.96 221.361 549.52 224.841 548.282 230.497C547.044 236.154 550.539 241.564 556.224 242.793C561.91 244.022 567.35 240.542 568.588 234.886C570.232 229.317 566.331 223.819 560.645 222.59Z"
                             stroke="url(#paint12_linear_6254_673)"
