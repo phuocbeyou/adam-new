@@ -85,7 +85,7 @@ const RoadmapComponent = () => {
               }}
             >
               <div
-                className="w-full max-w-xl relative rounded-2xl overflow-hidden roadmap-card-hover-effect shadow-white-glow-enhanced hover:shadow-white-glow-intense transition-all duration-300"
+                className="w-full hover:scale-[1.03]  max-w-xl relative rounded-2xl overflow-hidden roadmap-card-hover-effect shadow-white-glow-enhanced hover:shadow-white-glow-intense transition-all duration-300"
                 style={{ transform: isLeft ? "rotate(-3deg)" : "rotate(3deg)" }}
               >
                 <div className="absolute inset-[3px] bg-[#102644] rounded-[16px] z-10 shadow-inner-white" />
