@@ -1,5 +1,6 @@
 // src/components/HeartFunds.tsx
 import Image from "next/image";
+import FundDistribution from "./animation/fund-distribution";
 
 export default function HeartFunds() {
   return (
@@ -13,7 +14,7 @@ export default function HeartFunds() {
           src="/icon/Heart.svg"
           alt="Heart"
           fill
-          className="object-contain z-10"
+          className="object-contain z-0"
           priority
         />
         {/* Các nhánh quỹ lớn hơn, phủ lên */}
@@ -24,6 +25,7 @@ export default function HeartFunds() {
           className="object-contain z-20 scale-[1.8] -translate-y-14 -translate-x-2"
           priority
         />
+
       </div>
 
     </div>

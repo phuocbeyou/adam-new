@@ -24,9 +24,9 @@ const AdamFeaturesSection = () => {
   }
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 lg:px-16 relative z-10">
+    <div className="container mx-auto relative z-10">
       <h2
-        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white mb-8 sm:mb-12 lg:mb-16 font-bold cursor-default flex justify-center text-center px-2"
+        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white mb-8 sm:mb-12 lg:mb-16 font-bold cursor-default flex justify-center text-center w-full" // Removed horizontal padding from h2
         data-animate-id="features-title"
       >
         <motion.span
@@ -50,7 +50,9 @@ const AdamFeaturesSection = () => {
         </motion.span>
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2 lg:gap-3 xl:gap-4 w-full max-w-8xl px-2 sm:px-4 lg:px-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 w-full max-w-8xl px-4 sm:px-8 lg:px-16 mx-auto">
+        {" "}
+        {/* Increased gaps and adjusted padding */}
         <FeatureBox
           iconSrc="./icon/stake_icon.svg"
           title="Stake"

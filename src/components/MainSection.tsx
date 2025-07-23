@@ -58,16 +58,16 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
               | ReactElement<unknown, string | JSXElementConstructor<any>>
               | Iterable<ReactNode>
               | Promise<
-                  | string
-                  | number
-                  | bigint
-                  | boolean
-                  | ReactPortal
-                  | ReactElement<unknown, string | JSXElementConstructor<any>>
-                  | Iterable<ReactNode>
-                  | null
-                  | undefined
-                >
+                | string
+                | number
+                | bigint
+                | boolean
+                | ReactPortal
+                | ReactElement<unknown, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | null
+                | undefined
+              >
               | MotionValue<number>
               | MotionValue<string>
               | null
@@ -185,62 +185,30 @@ export default function MainSection() {
         <section id="home" className="mb-6 sm:mb-8" data-animate="hero">
           <div className="text-center relative">
             <h1
-              className={`text-4xl sm:text-6xl lg:text-8xl font-bold xl:text-[200px] text-white mb-4 sm:mb-8 lg:mb-12 transition-all duration-1500 sm:duration-2000 ${
-                showText
-                  ? "opacity-100 transform translate-y-0"
-                  : "opacity-0 transform translate-y-10"
-              }`}
+              className={`relative text-4xl sm:text-6xl lg:text-8xl font-bold xl:text-[200px] text-white mb-4 sm:mb-8 lg:mb-12 transition-all duration-1500 sm:duration-2000 ${showText ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
             >
-              <span
-                className={`mr-1 sm:mr-3 inline-block ${
-                  isMobile ? "" : "animate-fade-in-up"
-                }`}
-                style={{ animationDelay: "0.1s" }}
-              >
-                $
-              </span>
-              <span
-                className={`mr-1 sm:mr-3 inline-block ${
-                  isMobile ? "" : "animate-fade-in-up"
-                }`}
-                style={{ animationDelay: "0.2s" }}
-              >
-                A
-              </span>
-              <span
-                className={`mr-1 sm:mr-3 inline-block ${
-                  isMobile ? "" : "animate-fade-in-up"
-                }`}
-                style={{ animationDelay: "0.3s" }}
-              >
-                D
-              </span>
-              <span
-                className={`mr-1 sm:mr-3 inline-block ${
-                  isMobile ? "" : "animate-fade-in-up"
-                }`}
-                style={{ animationDelay: "0.4s" }}
-              >
-                A
-              </span>
-              <span
-                className={`inline-block ${
-                  isMobile ? "" : "animate-fade-in-up"
-                }`}
-                style={{ animationDelay: "0.5s" }}
-              >
-                M
-              </span>
+              <div className="relative w-[280px] sm:w-[420px] lg:w-[600px] xl:w-[800px] h-auto mx-auto">
+                <Image
+                  src="/logo/adam_text.png"
+                  alt="$ADAM logo"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
             </h1>
 
+
+
             <div
-              className={`relative flex justify-center items-center mb-4 sm:mb-8 lg:mb-12 transition-all duration-800 sm:duration-1000 ${
-                showAdam && heroAdamVisible
-                  ? "opacity-100 transform translate-y-0 scale-100"
-                  : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
-              }`}
+              className={`relative flex justify-center items-center mb-4 sm:mb-8 lg:mb-12 transition-all duration-800 sm:duration-1000 ${showAdam && heroAdamVisible
+                ? "opacity-100 transform translate-y-0 scale-100"
+                : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
+                }`}
             >
-              <div className="relative adam-character">
+              <div className="relative adam-character ">
                 <Image
                   src="/chacracter/adam.png"
                   alt="Adam Character"
@@ -253,11 +221,10 @@ export default function MainSection() {
             </div>
 
             <div
-              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-10 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${
-                showText
-                  ? "opacity-100 transform translate-y-0"
-                  : "opacity-0 transform translate-y-10"
-              }`}
+              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-10 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${showText
+                ? "opacity-100 transform translate-y-0"
+                : "opacity-0 transform translate-y-10"
+                }`}
               style={{ animationDelay: "0.8s" }}
             >
               <div className="text-center lg:text-right">
@@ -271,7 +238,7 @@ export default function MainSection() {
 
               <div className="text-center lg:text-left">
                 <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
-                  Built for Humanity.
+                  Built for Humanity
                 </h2>
                 <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20">
                   BE A PRAYER FOR A BETTER WORLD
@@ -284,16 +251,15 @@ export default function MainSection() {
         {/* About Section */}
         <section
           id="about"
-          className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32"
+          className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32 "
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* About Text */}
             <div
-              className={`mx-auto text-left space-y-3 sm:space-y-4 lg:space-y-2 transition-all duration-1000 sm:duration-1500 ease-out ${
-                visibleElements.about
-                  ? "opacity-100 transform translate-x-0"
-                  : "opacity-0 transform -translate-x-20"
-              }`}
+              className={`mx-auto text-left space-y-3 sm:space-y-4 lg:space-y-2 transition-all duration-1000 sm:duration-1500 ease-out ${visibleElements.about
+                ? "opacity-100 transform translate-x-0"
+                : "opacity-0 transform -translate-x-20"
+                }`}
               data-animate="about"
             >
               <div className="mb-6 sm:mb-8 lg:mb-12">
@@ -306,9 +272,8 @@ export default function MainSection() {
                 </h2>
               </div>
               <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.05s" }}
               >
                 {isMobile ? (
@@ -319,9 +284,8 @@ export default function MainSection() {
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.08s" }}
               >
                 {isMobile ? (
@@ -334,9 +298,8 @@ export default function MainSection() {
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.11s" }}
               >
                 {isMobile ? (
@@ -350,9 +313,8 @@ export default function MainSection() {
               </p>
 
               <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.14s" }}
               >
                 {isMobile ? (
@@ -365,9 +327,8 @@ export default function MainSection() {
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.17s" }}
               >
                 {isMobile ? (
@@ -381,9 +342,8 @@ export default function MainSection() {
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.2s" }}
               >
                 {isMobile ? (
@@ -397,11 +357,34 @@ export default function MainSection() {
               </p>
 
               <div
-                className={`mt-4 sm:mt-6 lg:mt-8 font-bold ${
-                  isMobile ? "" : "animate-fade-up"
-                }`}
+                className={`mt-4 sm:mt-6 lg:mt-8 font-bold ${isMobile ? "" : "animate-fade-up"
+                  }`}
                 style={{ animationDelay: "0.23s" }}
               >
+
+                <h2 className="text-4xl md:text-5xl font-bold mb-10">ABOUT $ADAM</h2>
+
+                <div className="space-y-2 text-lg md:text-xl leading-relaxed mb-10">
+                  <p>Meme from Myth. Built for Humanity.</p>
+
+                  <p>
+                    Our Father — <strong>$ADAM</strong>. He left Eden, but not his children.
+                  </p>
+
+                  <p>
+                    Now reborn as a meme coin for a new digital age — not to rule, but to remind us:
+                  </p>
+
+                  <p>PNL isn’t what you hold, it’s what you give</p>
+
+                  <p>
+                    Every stake is a belief. Every meme, a chance to support a better world.
+                  </p>
+
+                  <p>
+                    This is the meme with meaning — and <strong>$ADAM</strong> is where it begins.
+                  </p>
+                </div>
                 <div className="inline-flex items-center gap-2 sm:gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-3 sm:px-6 py-2 sm:py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <img
                     src="/logo/solana.png"
@@ -430,16 +413,16 @@ export default function MainSection() {
                   </span>
                 </div>
               </div>
+
             </div>
 
             {/* Chỉ hiển thị Adam character trên desktop */}
             {!isMobile && (
               <div
-                className={`flex justify-center items-center transition-all duration-800 sm:duration-1000 ease-in-out ${
-                  aboutAdamVisible && visibleElements.aboutAdam
-                    ? "opacity-100 transform translate-x-0 scale-100"
-                    : "opacity-0 transform translate-x-20 scale-95"
-                }`}
+                className={`flex justify-center items-end transition-all duration-800 sm:duration-1000 ease-in-out ${aboutAdamVisible && visibleElements.aboutAdam
+                  ? "opacity-100 transform translate-x-0 scale-100"
+                  : "opacity-0 transform translate-x-20 scale-95"
+                  }`}
                 data-animate="aboutAdam"
               >
                 <div className="relative adam-character">

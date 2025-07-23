@@ -3,6 +3,7 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { RotatingBorderCard } from "./animation/rotating-border-card"
 
 interface ContentItem {
   type: "paragraph" | "bullet"
@@ -230,41 +231,42 @@ const AdamIntroSection = () => {
           transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
         >
           {/* Main content box with rotating border effect */}
+
           <div
             className="relative group rotating-border-box h-[400px] sm:h-[500px] lg:h-[600px] rounded-2xl sm:rounded-3xl lg:rounded-4xl
-            transition-all duration-300 ease-out for smooth hover
-            hover:scale-[1.01]
-            hover:shadow-lg hover:shadow-blue-500/20
-          "
+    transition-all duration-300 ease-out hover:scale-[1.01]"
           >
+
             {/* Inner content wrapper, now with padding and z-index */}
-            <div className="relative z-20 flex flex-col justify-between h-full p-3 sm:p-4 lg:p-12">
-              <AnimatePresence mode="wait">
-                {currentContent && (
-                  <motion.div
-                    key={currentContent.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="w-full z-10 flex-grow"
-                  >
-                    <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-white text-lg tracking-normal">
-                      {currentContent.content.map((item, index) =>
-                        item.type === "paragraph" ? (
-                          <p key={index} className="leading-normal">
-                            {item.text}
-                          </p>
-                        ) : (
-                          <p key={index} className="leading-normal">
-                            - {item.text}
-                          </p>
-                        ),
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            <div className="relative z-20 flex flex-col justify-between h-full p-5 ">
+              <RotatingBorderCard width="100%" height="100%">
+                <AnimatePresence mode="wait">
+                  {currentContent && (
+                    <motion.div
+                      key={currentContent.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                      className="w-full z-10 flex-grow p-5"
+                    >
+                      <div className="space-y-4 sm:space-y-6 lg:space-y-4 text-white text-lg tracking-normal">
+                        {currentContent.content.map((item, index) =>
+                          item.type === "paragraph" ? (
+                            <p key={index} className="leading-normal">
+                              {item.text}
+                            </p>
+                          ) : (
+                            <p key={index} className="leading-normal">
+                              - {item.text}
+                            </p>
+                          ),
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </RotatingBorderCard>
             </div>
           </div>
         </motion.div>

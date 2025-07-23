@@ -189,17 +189,6 @@ body {
   height: 150%; /* Make it larger than the box to cover corners */
   top: -25%; /* Center it */
   left: -25%; /* Center it */
-  background: linear-gradient(
-    0deg,
-    rgba(0, 77, 244, 0) 30%,
-    rgba(0, 77, 244, 0.4) 42%,
-    rgba(0, 77, 244, 1) 50%,
-    rgba(38, 221, 255, 1) 100%,
-    rgba(38, 221, 255, 0) 95%
-  );
-  animation: rotate 4s linear infinite;
-  z-index: 0; /* Behind the inner content */
-  transform-origin: center center;
 }
 
 .rotating-border-box::after {

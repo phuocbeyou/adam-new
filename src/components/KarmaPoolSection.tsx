@@ -17,9 +17,10 @@ const KarmaPoolSection = () => {
           KARMA POOL?
         </h2>
         <div className="space-y-3 sm:space-y-4 text-white">
-          <p className="text-base sm:text-lg leading-relaxed transition-all duration-300 hover:text-gray-100 hover:translate-x-2">
+          <p className="text-base sm:text-lg leading-relaxed transition-all duration-300 hover:text-gray-100 hover:translate-x-2 font-bold italic">
             &quot;Every cause creates an effect. What you give returns - whether in time or value.&quot;
           </p>
+
           <p className="text-base sm:text-lg leading-relaxed transition-all duration-300 hover:text-gray-100 hover:translate-x-2">
             Today, the Karma Pool reflects that truth directly.
           </p>

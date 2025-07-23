@@ -1,5 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
+import { RotatingBorderCard } from "./animation/rotating-border-card"
 
 const RoadmapComponent = () => {
   const phases = [
@@ -7,7 +8,7 @@ const RoadmapComponent = () => {
       id: 1,
       title: "Phase 1: Launch & Foundation",
       items: [
-        "Launch $ADAM token (via Pump.fun or deployed contract)",
+        "Launch $ADAM token",
         "Activate Karma Pool & basic staking mechanism",
         "Build community on X, Discord, Telegram",
         '(Optional) Launch non-transferable "Proof of Builder" NFT - on-chain CV',
@@ -93,73 +94,26 @@ const RoadmapComponent = () => {
                 // Apply rotation based on position
                 style={{ transform: isLeft ? "rotate(-3deg)" : "rotate(3deg)" }}
               >
-                {/* First Rotating Gradient Layer (Clockwise) */}
-                <motion.div
-                  className="absolute z-0"
-                  style={{
-                    width: "200%",
-                    height: "200%",
-                    top: "-50%",
-                    left: "-50%",
-                    background: `linear-gradient(
-                      0deg,
-                      rgba(0, 77, 244, 0) 30%,
-                      rgba(0, 77, 244, 0.4) 42%,
-                      rgba(0, 77, 244, 1) 50%,
-                      rgba(38, 221, 255, 1) 100%,
-                      rgba(38, 221, 255, 0) 95%
-                    )`,
-                    transformOrigin: "center center",
-                  }}
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 4,
-                    ease: "linear",
-                    repeat: Number.POSITIVE_INFINITY,
-                  }}
-                />
-                {/* Second Rotating Gradient Layer (Counter-Clockwise) */}
-                <motion.div
-                  className="absolute z-0"
-                  style={{
-                    width: "200%",
-                    height: "200%",
-                    top: "-50%",
-                    left: "-50%",
-                    background: `linear-gradient(
-                      180deg, /* Changed angle for visual distinction */
-                      rgba(0, 77, 244, 0) 30%,
-                      rgba(0, 77, 244, 0.4) 42%,
-                      rgba(0, 77, 244, 1) 50%,
-                      rgba(38, 221, 255, 1) 100%,
-                      rgba(38, 221, 255, 0) 95%
-                    )`,
-                    transformOrigin: "center center",
-                  }}
-                  animate={{ rotate: -360 }} /* Rotate in opposite direction */
-                  transition={{
-                    duration: 4,
-                    ease: "linear",
-                    repeat: Number.POSITIVE_INFINITY,
-                  }}
-                />
-                {/* Inner Dark Background Layer */}
                 <div className="absolute inset-[3px] bg-[#102644] rounded-[16px] z-10" />
 
                 {/* Content Layer */}
-                <div className="relative z-20 p-6">
-                  <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">{phase.title}</h3>
-                  <div className="space-y-3">
-                    {phase.items.map((item, itemIndex) => (
-                      <div
-                        key={itemIndex}
-                        className="flex z-100 items-start gap-3 text-white text-sm leading-relaxed hover:text-gray-200 transition-colors duration-200"
-                      >
-                        <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="z-100">{item}</p>
+                <div className="relative z-20 p-5">
+                  <RotatingBorderCard width="100%" height="100%">
+                    <div className="p-5">
+                      <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">{phase.title}</h3>
+                      <div className="space-y-3">
+                        {phase.items.map((item, itemIndex) => (
+                          <div
+                            key={itemIndex}
+                            className="flex z-100 items-start gap-3 text-white text-sm leading-relaxed hover:text-gray-200 transition-colors duration-200"
+                          >
+                            <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                            <p className="z-100">{item}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  </RotatingBorderCard>
                 </div>
               </div>
             </motion.div>
