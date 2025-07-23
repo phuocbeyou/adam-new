@@ -238,7 +238,7 @@ export default function MainSection() {
               </div>
 
               <div className="text-center lg:text-left">
-                <h2 className="text-sm min-w-[250px] text-right sm:text-lg lg:text-2xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
+                <h2 className="text-sm min-w-[250px] text-center sm:text-lg lg:text-2xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
                   Giving is the alpha
                   Coded for karma
                 </h2>
