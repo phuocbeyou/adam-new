@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export const Footer = () => {
   return (
-    <div className="relative overflow-hidden text-white">
+    <div className="relative text-white">
       {/* Background image - lớp dưới cùng */}
       <img
         src="/footer/bg.png"
@@ -58,21 +58,16 @@ export const Footer = () => {
         </div>
 
         {/* Disclaimer */}
-        <div className="text-sm text-start space-y-3 text-gray-300 mx-auto leading-relaxed mt-20 mb-30">
+        <div className="text-sm text-center space-y-3 text-gray-300 mx-auto leading-relaxed mt-20 mb-30 w-full text-[22px]">
+          {/* Changed text-start to text-center and adjusted margin-top/bottom */}
           <p>“$ADAM” is a conceptual asset inspired by myth and meaning.</p>
           <p>
-            It is not associated with any individual, institution, or religious
-            doctrine. All symbolism, narratives, and artwork are
-            community-driven and intended for expressive, educational, and
-            altruistic purposes only.
+            It is not associated with any individual, institution, or religious doctrine. All symbolism, narratives, and
+            artwork are community-driven and intended for expressive, educational, and altruistic purposes only.
           </p>
-          <p>
-            We will never DM, email, or contact you to ask for your wallet info
-            or private keys.
-          </p>
+          <p>We will never DM, email, or contact you to ask for your wallet info or private keys.</p>
           <p>Stay safe, stake with intention.</p>
         </div>
-
         {/* Social Icons */}
         <div className="flex justify-center items-center gap-6 mt-6">
           {[FaXTwitter, FaTelegram, FaDiscord].map((Icon, i) => (
@@ -96,7 +91,7 @@ export const Footer = () => {
       <img
         src="/footer/footer.png"
         alt="footer"
-        className="absolute bottom-0 w-full z-0 pointer-events-none"
+        className="absolute bottom-0 w-full z-0"
       />
     </div>
   );

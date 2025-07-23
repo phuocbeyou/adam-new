@@ -54,6 +54,7 @@ const RoadmapComponent = () => {
       ],
     },
   ]
+
   return (
     <div className="relative">
       {/* Title */}
@@ -64,82 +65,87 @@ const RoadmapComponent = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <h1 className="text-6xl md:text-5xl p-2 font-bold text-white tracking-wider bg-white/10 backdrop-blur-xs">
-          {" "}
           ROADMAP
         </h1>
       </motion.div>
+
       {/* Zigzag Layout Container */}
       <div className="max-w-7xl mx-auto px-8 py-8 space-y-24">
         {phases.map((phase, index) => {
           const isLeft = index % 2 === 0
+
           return (
             <motion.div
               key={phase.id}
               className={`flex ${isLeft ? "justify-start" : "justify-end"}`}
               viewport={{ once: true, amount: 0.4 }}
-              // Floating animation: moves up and down
               animate={{ y: [0, -10, 0] }} // Keyframes for floating effect
               transition={{
-                duration: 5, // Increased duration for a slower, more "drifting" feel
+                duration: 3, // Increased duration for a slower, more "drifting" feel
                 repeat: Number.POSITIVE_INFINITY,
                 repeatType: "mirror", // Makes the animation go back and forth smoothly
                 ease: "easeInOut",
                 delay: index * 0.3, // Stagger the animation start for each card
               }}
             >
-              <div className="w-full max-w-xl relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.7)]">
+              <div
+                className="w-full max-w-xl relative rounded-2xl overflow-hidden roadmap-card-hover-effect"
+                // Apply rotation based on position
+                style={{ transform: isLeft ? "rotate(-3deg)" : "rotate(3deg)" }}
+              >
                 {/* First Rotating Gradient Layer (Clockwise) */}
                 <motion.div
-                  className="absolute z-0 will-change-transform"
+                  className="absolute z-0"
                   style={{
                     width: "200%",
                     height: "200%",
                     top: "-50%",
                     left: "-50%",
                     background: `linear-gradient(
-                    0deg,
-                    rgba(0, 77, 244, 0) 30%,
-                    rgba(0, 77, 244, 0.4) 42%,
-                    rgba(0, 77, 244, 1) 50%,
-                    rgba(38, 221, 255, 1) 100%,
-                    rgba(38, 221, 255, 0) 95%
-                  )`,
+                      0deg,
+                      rgba(0, 77, 244, 0) 30%,
+                      rgba(0, 77, 244, 0.4) 42%,
+                      rgba(0, 77, 244, 1) 50%,
+                      rgba(38, 221, 255, 1) 100%,
+                      rgba(38, 221, 255, 0) 95%
+                    )`,
                     transformOrigin: "center center",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{
-                    duration: 15, // Increased duration for smoother animation
+                    duration: 4,
                     ease: "linear",
                     repeat: Number.POSITIVE_INFINITY,
                   }}
                 />
                 {/* Second Rotating Gradient Layer (Counter-Clockwise) */}
                 <motion.div
-                  className="absolute z-0 will-change-transform"
+                  className="absolute z-0"
                   style={{
                     width: "200%",
                     height: "200%",
                     top: "-50%",
                     left: "-50%",
                     background: `linear-gradient(
-                    180deg, /* Changed angle for visual distinction */
-                    rgba(0, 77, 244, 0) 30%,
-                    rgba(0, 77, 244, 0.4) 42%,
-                    rgba(0, 77, 244, 1) 50%,
-                    rgba(38, 221, 255, 1) 100%,
-                    rgba(38, 221, 255, 0) 95%
-                  )`,
+                      180deg, /* Changed angle for visual distinction */
+                      rgba(0, 77, 244, 0) 30%,
+                      rgba(0, 77, 244, 0.4) 42%,
+                      rgba(0, 77, 244, 1) 50%,
+                      rgba(38, 221, 255, 1) 100%,
+                      rgba(38, 221, 255, 0) 95%
+                    )`,
                     transformOrigin: "center center",
                   }}
                   animate={{ rotate: -360 }} /* Rotate in opposite direction */
                   transition={{
-                    duration: 15, // Increased duration for smoother animation
+                    duration: 4,
                     ease: "linear",
                     repeat: Number.POSITIVE_INFINITY,
                   }}
                 />
                 {/* Inner Dark Background Layer */}
                 <div className="absolute inset-[3px] bg-[#102644] rounded-[16px] z-10" />
+
                 {/* Content Layer */}
                 <div className="relative z-20 p-6">
                   <h3 className="text-white font-bold text-xl mb-4 text-center relative z-100">{phase.title}</h3>
@@ -160,7 +166,14 @@ const RoadmapComponent = () => {
           )
         })}
       </div>
+
+      <style jsx>{`
+        .shadow-lg {
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 2);
+        }
+      `}</style>
     </div>
   )
 }
+
 export default RoadmapComponent
