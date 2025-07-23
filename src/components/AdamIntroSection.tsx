@@ -224,7 +224,7 @@ const AdamIntroSection = () => {
 
         {/* Right Column - Content Box */}
         <motion.div
-          className="w-full lg:w-2/3"
+          className="w-full lg:w-2/3 bg-[#102544] rounded-[20px]"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -234,7 +234,9 @@ const AdamIntroSection = () => {
 
           <div
             className="relative group rotating-border-box h-[400px] sm:h-[500px] lg:h-[600px] rounded-2xl sm:rounded-3xl lg:rounded-4xl
-    transition-all duration-300 ease-out hover:scale-[1.01]"
+           transition-all duration-300 ease-out hover:scale-[1.01]
+           border-2 border-cyan-500/80
+           shadow-[0_0_15px_5px_rgba(14,165,233,0.5)]"
           >
 
             {/* Inner content wrapper, now with padding and z-index */}

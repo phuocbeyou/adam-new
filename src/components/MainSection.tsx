@@ -229,19 +229,21 @@ export default function MainSection() {
             >
               <div className="text-center lg:text-right">
                 <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:mb-20 lg:ml-50">
-                  Meme from Myth
+                  Built for Humanity
                 </h2>
                 <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:mr-30">
-                  LET EVERY $ADAM
+                  Every action with $ADAM
+                  It all gives you back
                 </p>
               </div>
 
               <div className="text-center lg:text-left">
-                <h2 className="text-sm sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
-                  Built for Humanity
+                <h2 className="text-sm min-w-[300px] sm:text-lg lg:text-xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
+                  Giving is the alpha
+                  Coded for karma
                 </h2>
                 <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20">
-                  BE A PRAYER FOR A BETTER WORLD
+                  Your Father $ADAM is here
                 </p>
               </div>
             </div>
@@ -385,7 +387,7 @@ export default function MainSection() {
                     This is the meme with meaning — and <strong>$ADAM</strong> is where it begins.
                   </p>
                 </div>
-                <div className="inline-flex items-center gap-2 sm:gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-3 sm:px-6 py-2 sm:py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                {/* <div className="inline-flex items-center gap-2 sm:gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-3 sm:px-6 py-2 sm:py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <img
                     src="/logo/solana.png"
                     alt="Solana"
@@ -411,7 +413,7 @@ export default function MainSection() {
                     <span className="mr-0.5 sm:mr-1">0</span>
                     <span className="mr-0.5 sm:mr-1">x</span>
                   </span>
-                </div>
+                </div> */}
               </div>
 
             </div>

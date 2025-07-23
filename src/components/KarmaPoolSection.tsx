@@ -29,7 +29,7 @@ const KarmaPoolSection = () => {
           </p>
         </div>
         <button className="mt-6 sm:mt-8 bg-white text-black font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-500 hover:bg-gray-100 hover:scale-110 hover:shadow-xl hover:shadow-white/30 active:scale-95 transform">
-          Give On-Chain. Change Off-Chain.
+          EXPLORE
         </button>
       </div>
       {/* Right: HeartFunds */}

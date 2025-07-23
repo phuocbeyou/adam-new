@@ -194,7 +194,6 @@ body {
 .rotating-border-box::after {
   content: "";
   position: absolute;
-  inset: 3px; /* Creates the border thickness */
   background-color: #102644; /* Your desired inner background color */
   border-radius: calc(20px - 3px); /* Slightly smaller radius than parent for border effect */
   z-index: 1; /* Above the rotating gradient, below content */

@@ -19,7 +19,7 @@ const AdamSection = () => {
       <AdamFeaturesSection />
 
       {/* Karma Pool Section */}
-      <div id="adamnomic" className="container mx-auto px-3 sm:px-4 lg:px-16 py-8 sm:py-12 lg:py-16 relative z-10">
+      <div id="adamnomic" className="z-0 container mx-auto px-3 sm:px-4 lg:px-16 py-8 sm:py-12 lg:py-16 relative">
         <KarmaPoolSection />
       </div>
 

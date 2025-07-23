@@ -46,14 +46,14 @@ export const Footer = () => {
           <span className="text-xl font-bold">$ADAM</span>
         </div>
 
-        <div className="inline-flex border-2 border-white items-center px-10 py-4 bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] rounded-full text-white font-mono text-sm transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
-          <img
+        <div className="w-2xl inline-flex border-2 border-white items-center px-10 py-3 bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] rounded-full text-white text-sm transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          {/* <img
             src="/logo/solana.png"
             alt="Solana"
             className="w-30 h-auto mr-3"
-          />
-          <strong className="text-black text-[15px] font-bold">
-            0 x a d n 2 s d a n 2 y o 2 8 u 0 x
+          /> */}
+          <strong className="text-black text-[24px] font-semibold text-center w-full">
+            COMING SOON
           </strong>
         </div>
 
