@@ -242,7 +242,7 @@ export default function MainSection() {
                   Giving is the alpha
                   Coded for karma
                 </h2>
-                <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20">
+                <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20 -mt-2">
                   Your Father $ADAM is here
                 </p>
               </div>
