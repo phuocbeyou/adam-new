@@ -373,17 +373,19 @@ export default function Karma() {
                                 />
                             </g>
                             <motion.text
-                                x="295"        // Tuỳ chỉnh để căn giữa theo chiều ngang
-                                y="44"         // Tuỳ chỉnh để căn giữa theo chiều dọc
+                                x="295"
+                                y="44"
                                 fill="white"
-                                fontSize="15"  // Điều chỉnh size tùy ý
+                                fontSize="15"
                                 fontWeight="bold"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1 }}
                             >
-                                SPIRITUAL CULTURE FUND 10%
+                                <tspan>SPIRITUAL CULTURE FUND</tspan>
+                                <tspan x="563">10%</tspan> {/* Điều chỉnh x theo chiều rộng tổng thể */}
                             </motion.text>
+
                         </motion.g>
 
                         {/* Static text groups */}
@@ -409,7 +411,8 @@ export default function Karma() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            EMPATHY FUND 10%
+                            <tspan>EMPATHY FUND</tspan>
+                            <tspan x="330">10%</tspan>
                         </motion.text>
 
                         {/* Additional static elements */}
@@ -435,7 +438,8 @@ export default function Karma() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            TECH FOR GOOD FUN 15%
+                            <tspan>TECH FOR GOOD FUN</tspan>
+                            <tspan x="280">15%</tspan>
                         </motion.text>
 
                         <g filter="url(#filter4_d_6254_673)">
@@ -460,7 +464,8 @@ export default function Karma() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            HEALING HANDS FUND 20%
+                            <tspan>HEALING HANDS FUND</tspan>
+                            <tspan x="280">20%</tspan>
                         </motion.text>
 
                         <g filter="url(#filter5_d_6254_673)">
@@ -485,7 +490,8 @@ export default function Karma() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            WEB3 EDU SEED FUN 25%
+                            <tspan>WEB3 EDU SEED FUN</tspan>
+                            <tspan x="833">25%</tspan>
                         </motion.text>
 
                         <g filter="url(#filter6_d_6254_673)">
@@ -510,7 +516,8 @@ export default function Karma() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            GREEN EARTH FUN 20%
+                            <tspan>GREEN EARTH FUN</tspan>
+                            <tspan x="838">20%</tspan>
                         </motion.text>
                     </g>
 

@@ -227,23 +227,23 @@ export default function MainSection() {
                 }`}
               style={{ animationDelay: "0.8s" }}
             >
-              <div className="lg:text-right flex flex-col items-end">
-                <h2 className="text-base sm:text-xl lg:text-2xl text-left font-bold text-white mr-50 w-[300px] mb-10 sm:mb-4 md:mb-6 lg:mb-20 lg:ml-50">
+              <div className="lg:text-right flex flex-col items-end ">
+                <h2 className="-mt-5 text-base sm:text-xl lg:text-2xl text-left font-bold text-white mr-25 w-[300px] mb-10 sm:mb-4 md:mb-6 lg:mb-20 lg:ml-50">
                   Built for Humanity
                 </h2>
-                <p className="text-base mr-20 text-center w-[330px] sm:text-xl lg:text-2xl font-bold text-white">
-                  Every action with $ADAM
-                  It all gives you back
+                <p className="text-base mr-20 text-center w-[250px] sm:text-xl lg:text-2xl font-bold text-white">
+                  Giving is the alpha
+                  Coded for karma
                 </p>
               </div>
 
               <div className="text-center lg:text-left">
-                <h2 className="text-sm min-w-[250px] text-center sm:text-lg lg:text-2xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-50 lg:mb-20">
-                  Giving is the alpha
-                  Coded for karma
-                </h2>
-                <p className="text-base sm:text-xl lg:text-2xl font-bold text-white lg:ml-20 -mt-2">
+                <h2 className="-mt-5 text-sm min-w-[350px] text-center sm:text-lg lg:text-2xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-25 lg:mb-20">
                   Your Father $ADAM is here
+                </h2>
+                <p className="text-base w-[330px] text-center sm:text-xl lg:text-2xl font-bold text-white lg:ml-20 -mt-2">
+                  Every action with $ADAM
+                  It all gives you back
                 </p>
               </div>
             </div>
