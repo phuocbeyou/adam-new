@@ -73,7 +73,7 @@ export const Footer = () => {
           {[FaXTwitter, FaTelegram, FaDiscord].map((Icon, i) => (
             <div
               key={i}
-              className="w-10 h-10 p-2 flex mb-[-50px] items-center justify-center rounded-full bg-white/20 border border-white hover:scale-110 transition-transform duration-200 cursor-pointer"
+              className="w-10 h-10 p-2 flex items-center justify-center rounded-full bg-white/20 border border-white hover:scale-110 transition-transform duration-200 cursor-pointer"
             >
               <Icon className="text-white w-5 h-5" />
             </div>
@@ -91,7 +91,7 @@ export const Footer = () => {
       <img
         src="/footer/footer.png"
         alt="footer"
-        className="absolute bottom-0 w-full z-0"
+        className="absolute bottom-[13px] w-full z-0"
       />
     </div>
   );
