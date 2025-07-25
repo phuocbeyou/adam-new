@@ -33,11 +33,10 @@ const KarmaPoolSection = () => {
         </button>
       </div>
       {/* Right: HeartFunds */}
-      <div className="w-full md:w-2/3">
-        <div className="">
-          <HeartFunds />
-        </div>
+      <div className="w-full md:w-2/3 flex justify-center items-center">
+        <HeartFunds />
       </div>
+
     </motion.div>
   )
 }

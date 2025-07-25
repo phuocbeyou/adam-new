@@ -78,7 +78,8 @@ const AdamFeaturesSection = () => {
           iconSrc="./icon/money-hold.svg"
           title="HODL"
           description1="Hold with intention to access future tools, perks, and airdrops."
-          description2="1–2% of transaction fees are routed into the Karma Pool — doing good simply by holding"
+          description2="
+          A small portion of transaction fees is routed into the Karma Pool, so simply by holding, you're already contributing to doing good."
           customDelay={3}
         />
       </div>

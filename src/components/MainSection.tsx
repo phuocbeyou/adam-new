@@ -1,21 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
-"use client";
-import Image from "next/image";
+"use client"
+
+import Image from "next/image"
 import {
-  JSXElementConstructor,
-  Key,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
+  type JSXElementConstructor,
+  type Key,
+  type ReactElement,
+  type ReactNode,
+  type ReactPortal,
   useEffect,
   useState,
-} from "react";
-import { motion, MotionValue } from "framer-motion";
+} from "react"
+import { motion, type MotionValue } from "framer-motion"
 
 interface AnimateLettersProps {
-  text: string;
-  className?: string;
+  text: string
+  className?: string
 }
 
 export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
@@ -26,7 +27,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
         staggerChildren: 0.02,
       },
     },
-  };
+  }
 
   const child = {
     hidden: { opacity: 0, x: -30 },
@@ -35,7 +36,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
       x: 0,
       transition: { duration: 0.3, ease: "easeInOut" as const },
     },
-  };
+  }
 
   return (
     <motion.span
@@ -72,7 +73,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
               | MotionValue<string>
               | null
               | undefined,
-            i: Key | null | undefined
+            i: Key | null | undefined,
           ) => (
             <motion.span
               key={i}
@@ -81,35 +82,36 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
                 display: "inline-block",
                 whiteSpace: char === " " ? "pre" : "normal",
               }}
-            ></motion.span>
-          )
+            >
+              {char}
+            </motion.span>
+          ),
         )}
     </motion.span>
-  );
+  )
 }
 
 export default function MainSection() {
-  const [showText, setShowText] = useState(false);
-  const [showAdam, setShowAdam] = useState(false);
-  const [heroAdamVisible, setHeroAdamVisible] = useState(true);
-  const [aboutAdamVisible, setAboutAdamVisible] = useState(false);
+  const [showText, setShowText] = useState(false)
+  const [showAdam, setShowAdam] = useState(false)
+  const [heroAdamVisible, setHeroAdamVisible] = useState(true)
+  const [aboutAdamVisible, setAboutAdamVisible] = useState(false)
   const [visibleElements, setVisibleElements] = useState({
     hero: false,
     about: false,
     aboutAdam: false,
-  });
-  const [isMobile, setIsMobile] = useState(false);
+  })
+  const [isMobile, setIsMobile] = useState(false)
 
   // Check if mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -117,66 +119,61 @@ export default function MainSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const elementId = entry.target.getAttribute("data-animate");
+            const elementId = entry.target.getAttribute("data-animate")
             setVisibleElements((prev) => ({
               ...prev,
               [elementId || ""]: true,
-            }));
+            }))
           }
-        });
+        })
       },
       {
         threshold: isMobile ? 0.1 : 0.05,
         rootMargin: isMobile ? "0px 0px -10px 0px" : "-20px 0px -20px 0px",
-      }
-    );
+      },
+    )
 
-    const elementsToObserve = document.querySelectorAll("[data-animate]");
-    elementsToObserve.forEach((el) => observer.observe(el));
+    const elementsToObserve = document.querySelectorAll("[data-animate]")
+    elementsToObserve.forEach((el) => observer.observe(el))
 
-    return () => observer.disconnect();
-  }, [isMobile]);
+    return () => observer.disconnect()
+  }, [isMobile])
 
   // Scroll observer for Adam character visibility
   useEffect(() => {
     const handleScroll = () => {
-      const aboutSection = document.getElementById("about");
+      const aboutSection = document.getElementById("about")
       if (aboutSection) {
-        const aboutRect = aboutSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        const aboutIsVisible =
-          aboutRect.top < windowHeight * (isMobile ? 0.9 : 0.8);
+        const aboutRect = aboutSection.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        const aboutIsVisible = aboutRect.top < windowHeight * (isMobile ? 0.9 : 0.8)
 
         if (aboutIsVisible) {
-          setHeroAdamVisible(false);
+          setHeroAdamVisible(false)
           // Trên mobile ẩn luôn Adam trong about section
-          setAboutAdamVisible(isMobile ? false : true);
+          setAboutAdamVisible(isMobile ? false : true)
         } else {
-          setHeroAdamVisible(true);
-          setAboutAdamVisible(false);
+          setHeroAdamVisible(true)
+          setAboutAdamVisible(false)
         }
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isMobile])
 
   useEffect(() => {
-    setShowText(true);
-
+    setShowText(true)
     const timer = setTimeout(
       () => {
-        setShowAdam(true);
+        setShowAdam(true)
       },
-      isMobile ? 800 : 1500
-    );
-
-    return () => clearTimeout(timer);
-  }, [isMobile]);
+      isMobile ? 800 : 1500,
+    )
+    return () => clearTimeout(timer)
+  }, [isMobile])
 
   return (
     <main className="relative z-10 px-3 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
@@ -200,12 +197,10 @@ export default function MainSection() {
               </div>
             </h1>
 
-
-
             <div
               className={`relative flex justify-center items-center mb-4 sm:mb-8 lg:mb-12 transition-all duration-800 sm:duration-1000 ${showAdam && heroAdamVisible
-                ? "opacity-100 transform translate-y-0 scale-100"
-                : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
+                  ? "opacity-100 transform translate-y-0 scale-100"
+                  : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
                 }`}
             >
               <div className="relative adam-character ">
@@ -221,9 +216,7 @@ export default function MainSection() {
             </div>
 
             <div
-              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-10 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${showText
-                ? "opacity-100 transform translate-y-0"
-                : "opacity-0 transform translate-y-10"
+              className={`mt-8 sm:mt-12 md:mt-16 lg:mt-10 absolute top-80 right-0 left-0 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-2 sm:px-0 transition-all duration-1000 sm:duration-1500 ${showText ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
                 }`}
               style={{ animationDelay: "0.8s" }}
             >
@@ -233,16 +226,17 @@ export default function MainSection() {
                 </h2>
                 <p className="text-base mr-20 text-center w-[250px] sm:text-xl lg:text-2xl font-bold text-white">
                   Giving is the alpha
+                  <br />
                   Coded for karma
                 </p>
               </div>
-
               <div className="text-center lg:text-left">
                 <h2 className="-mt-5 text-sm min-w-[350px] text-center sm:text-lg lg:text-2xl font-bold text-white mr-50 mb-10 sm:mb-4 md:mb-6 lg:ml-25 lg:mb-20">
                   Your Father $ADAM is here
                 </h2>
                 <p className="text-base w-[330px] text-center sm:text-xl lg:text-2xl font-bold text-white lg:ml-20 -mt-2">
                   Every action with $ADAM
+                  <br />
                   It all gives you back
                 </p>
               </div>
@@ -251,179 +245,115 @@ export default function MainSection() {
         </section>
 
         {/* About Section */}
-        <section
-          id="about"
-          className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32 "
-        >
+        <section id="about" className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32 ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* About Text */}
             <div
-              className={`mx-auto text-left space-y-3 sm:space-y-4 lg:space-y-2 transition-all duration-1000 sm:duration-1500 ease-out ${visibleElements.about
-                ? "opacity-100 transform translate-x-0"
-                : "opacity-0 transform -translate-x-20"
+              className={`mx-auto text-left space-y-3 sm:space-y-4 lg:space-y-2 transition-all duration-1000 sm:duration-1500 ease-out ${visibleElements.about ? "opacity-100 transform translate-x-0" : "opacity-0 transform -translate-x-20"
                 }`}
               data-animate="about"
             >
               <div className="mb-6 sm:mb-8 lg:mb-12">
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                  {isMobile ? (
-                    <span>ABOUT $ADAM</span>
-                  ) : (
-                    <AnimateLetters text="ABOUT $ADAM" />
-                  )}
+                  {isMobile ? <span>ABOUT $ADAM</span> : <AnimateLetters text="ABOUT $ADAM" />}
                 </h2>
               </div>
+
               <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.05s" }}
               >
                 {isMobile ? (
-                  <span>Meme from Myth. Built for Humanity.</span>
-                ) : (
-                  <AnimateLetters text="Meme from Myth. Built for Humanity." />
-                )}
-              </p>
-
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
-                style={{ animationDelay: "0.08s" }}
-              >
-                {isMobile ? (
-                  <span>
-                    Our Father — $ADAM. He left Eden, but not his children.
-                  </span>
+                  <span>Our Father — $ADAM. He left Eden, but not his children.</span>
                 ) : (
                   <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
                 )}
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                style={{ animationDelay: "0.08s" }}
+              >
+                {isMobile ? (
+                  <span>Now reborn in the digital age, $ADAM comes not to rule, but to remind.</span>
+                ) : (
+                  <AnimateLetters text="Now reborn in the digital age, $ADAM comes not to rule, but to remind." />
+                )}
+              </p>
+
+              <p
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.11s" }}
               >
                 {isMobile ? (
-                  <span>
-                    Now reborn as a meme coin for a new digital age – not to
-                    rule, but to remind us:
-                  </span>
+                  <span>"The true value of earning lies not in what you hold, but in what you give."</span>
                 ) : (
-                  <AnimateLetters text="Now reborn as a meme coin for a new digital age – not to rule, but to remind us:" />
+                  <AnimateLetters text='"The true value of earning lies not in what you hold, but in what you give."' />
                 )}
               </p>
 
               <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.14s" }}
               >
                 {isMobile ? (
-                  <span>
-                    PNL isn&apos;t what you hold, it&apos;s what you give.
-                  </span>
+                  <span>Every stake is an act of belief. Every DAO creation is a step toward collective healing.</span>
                 ) : (
-                  <AnimateLetters text="PNL isn't what you hold, it's what you give." />
+                  <AnimateLetters text="Every stake is an act of belief. Every DAO creation is a step toward collective healing." />
                 )}
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.17s" }}
               >
                 {isMobile ? (
-                  <span>
-                    Every stake is a belief. Every meme, a chance to support a
-                    better world.
-                  </span>
+                  <span>Every $ADAM held is a conscious act for humanity.</span>
                 ) : (
-                  <AnimateLetters text="Every stake is a belief. Every meme, a chance to support a better world." />
+                  <AnimateLetters text="Every $ADAM held is a conscious act for humanity." />
                 )}
               </p>
 
               <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.2s" }}
               >
                 {isMobile ? (
-                  <span>
-                    This is the meme with meaning — and $ADAM is where it
-                    begins.
-                  </span>
+                  <span>This is the mission of the Father reborn to awaken and redefine value through compassion.</span>
                 ) : (
-                  <AnimateLetters text="This is the meme with meaning — and $ADAM is where it begins." />
+                  <AnimateLetters text="This is the mission of the Father reborn to awaken and redefine value through compassion." />
                 )}
               </p>
 
-              <div
-                className={`mt-4 sm:mt-6 lg:mt-8 font-bold ${isMobile ? "" : "animate-fade-up"
-                  }`}
+              <p
+                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
                 style={{ animationDelay: "0.23s" }}
               >
+                {isMobile ? (
+                  <span>Where giving is the alpha, and every action becomes a contribution toward a better world.</span>
+                ) : (
+                  <AnimateLetters text="Where giving is the alpha, and every action becomes a contribution toward a better world." />
+                )}
+              </p>
 
-                <h2 className="text-4xl md:text-5xl font-bold mb-10">ABOUT $ADAM</h2>
-
-                <div className="space-y-2 text-lg md:text-xl leading-relaxed mb-10">
-                  <p>Meme from Myth. Built for Humanity.</p>
-
-                  <p>
-                    Our Father — <strong>$ADAM</strong>. He left Eden, but not his children.
-                  </p>
-
-                  <p>
-                    Now reborn as a meme coin for a new digital age — not to rule, but to remind us:
-                  </p>
-
-                  <p>PNL isn’t what you hold, it’s what you give</p>
-
-                  <p>
-                    Every stake is a belief. Every meme, a chance to support a better world.
-                  </p>
-
-                  <p>
-                    This is the meme with meaning — and <strong>$ADAM</strong> is where it begins.
-                  </p>
-                </div>
-                {/* <div className="inline-flex items-center gap-2 sm:gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#A1D5FF] to-[#3499FF] px-3 sm:px-6 py-2 sm:py-3 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <img
-                    src="/logo/solana.png"
-                    alt="Solana"
-                    className="h-4 sm:h-6 w-auto"
-                  />
-                  <span className="font-mono text-xs sm:text-sm font-bold tracking-wider text-black lg:text-base">
-                    <span className="mr-0.5 sm:mr-1">0</span>
-                    <span className="mr-0.5 sm:mr-1">x</span>
-                    <span className="mr-0.5 sm:mr-1">a</span>
-                    <span className="mr-0.5 sm:mr-1">d</span>
-                    <span className="mr-0.5 sm:mr-1">n</span>
-                    <span className="mr-0.5 sm:mr-1">2</span>
-                    <span className="mr-0.5 sm:mr-1">s</span>
-                    <span className="mr-0.5 sm:mr-1">d</span>
-                    <span className="mr-0.5 sm:mr-1">a</span>
-                    <span className="mr-0.5 sm:mr-1">n</span>
-                    <span className="mr-0.5 sm:mr-1">2</span>
-                    <span className="mr-0.5 sm:mr-1">y</span>
-                    <span className="mr-0.5 sm:mr-1">o</span>
-                    <span className="mr-0.5 sm:mr-1">2</span>
-                    <span className="mr-0.5 sm:mr-1">8</span>
-                    <span className="mr-0.5 sm:mr-1">u</span>
-                    <span className="mr-0.5 sm:mr-1">0</span>
-                    <span className="mr-0.5 sm:mr-1">x</span>
-                  </span>
-                </div> */}
-              </div>
-
+              <p
+                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                style={{ animationDelay: "0.26s" }}
+              >
+                {isMobile ? (
+                  <span>And $ADAM is where it begins.</span>
+                ) : (
+                  <AnimateLetters text="And $ADAM is where it begins." />
+                )}
+              </p>
             </div>
 
             {/* Chỉ hiển thị Adam character trên desktop */}
             {!isMobile && (
               <div
                 className={`flex justify-center items-end transition-all duration-800 sm:duration-1000 ease-in-out ${aboutAdamVisible && visibleElements.aboutAdam
-                  ? "opacity-100 transform translate-x-0 scale-100"
-                  : "opacity-0 transform translate-x-20 scale-95"
+                    ? "opacity-100 transform translate-x-0 scale-100"
+                    : "opacity-0 transform translate-x-20 scale-95"
                   }`}
                 data-animate="aboutAdam"
               >
@@ -453,7 +383,6 @@ export default function MainSection() {
             transform: translateY(0);
           }
         }
-
         @keyframes slide-up-letter {
           0% {
             opacity: 0;
@@ -464,7 +393,6 @@ export default function MainSection() {
             transform: translateY(0);
           }
         }
-
         @keyframes float {
           0%,
           100% {
@@ -474,7 +402,6 @@ export default function MainSection() {
             transform: translateY(-10px);
           }
         }
-
         @keyframes float-mobile {
           0%,
           100% {
@@ -484,7 +411,6 @@ export default function MainSection() {
             transform: translateY(-5px);
           }
         }
-
         @keyframes letter-bounce {
           0%,
           100% {
@@ -494,53 +420,44 @@ export default function MainSection() {
             transform: translateY(-5px);
           }
         }
-
         .animate-fade-in-up {
           animation: slide-up-letter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
             forwards;
           opacity: 0;
         }
-
         .animate-letter {
           animation: slide-up-letter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
             forwards;
           opacity: 0;
         }
-
         .animate-fade-up {
           animation: fade-in-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
             forwards;
           opacity: 0;
         }
-
         .duration-2000 {
           transition-duration: 2500ms;
         }
-
         .adam-character {
           position: relative;
         }
-
         .adam-character img {
           animation: float 3s ease-in-out infinite;
           transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform-origin: center bottom;
           filter: brightness(1) drop-shadow(0 0 0px #fff);
         }
-
         @media (max-width: 768px) {
           .adam-character img {
             animation: float-mobile 2s ease-in-out infinite;
             transition: all 0.3s ease-out;
           }
-
           .adam-character:hover img {
             animation: float-mobile 1s ease-in-out infinite;
             transform: scale(1.05);
             filter: brightness(1.1);
           }
         }
-
         @media (min-width: 769px) {
           .adam-character:hover img {
             animation: float 1.5s ease-in-out infinite;
@@ -551,15 +468,13 @@ export default function MainSection() {
             box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.3);
           }
         }
-
         .animate-on-scroll {
           transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
         .animate-letter.visible {
           animation: letter-bounce 0.8s ease-out forwards;
         }
       `}</style>
     </main>
-  );
+  )
 }

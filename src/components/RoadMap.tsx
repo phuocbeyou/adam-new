@@ -9,10 +9,11 @@ const RoadmapComponent = () => {
       id: 1,
       title: "Phase 1: Launch & Foundation",
       items: [
-        "Activate Karma Pool & basic staking mechanism",
-        "Build community on X, Discord, Telegram",
-        "Kick off marketing campaigns and partnerships with KOLs & builders",
-        "Open DAO registration and set up governance channels",
+        "Activate the Karma Pool and deploy the basic staking mechanism",
+        "Build and grow the community across X, Discord, and Telegram",
+        "Launch initial marketing campaigns and collaborate with KOLs & builders",
+        "Open DAO registration and establish governance channels",
+        "Forge partnerships with aligned charity organizations to co-create impact-driven DAOs and lay the groundwork for a compassionate ecosystem"
       ],
     },
     {

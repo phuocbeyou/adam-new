@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { RotatingBorderCard } from "./animation/rotating-border-card"
 
 interface ContentItem {
-  type: "paragraph" | "bullet"
+  type: "paragraph" | "bullet" | "dot"
   text: string
 }
 
@@ -23,25 +23,33 @@ const contentData: SectionContent[] = [
     content: [
       {
         type: "paragraph",
-        text: "$ADAM - a meme that gives back - where every action of $ADAM (stake, vote, or hold) helps fund real-world impact",
-      },
-      {
-        type: "bullet",
-        text: "A memecoin that commits to people - not just pump and dump",
-      },
-      {
-        type: "bullet",
-        text: "A memecoin where giving is embedded in the code",
-      },
-      {
-        type: "bullet",
-        text: "A memecoin with meaning into the missions for spreading out the love for better world, and transactions into transformation",
+        text: "$ADAM — the Father reborn to awaken compassion, restore balance, and serve humanity."
       },
       {
         type: "paragraph",
-        text: "Whether you're a developer, a dreamer, or a donor - $ADAM give everyone a way to do good, transparently and collectively, without needing a foundation, fame, or fortune.",
+        text: "Every action with $ADAM — whether you stake, vote, or hold — carries meaning."
       },
-    ],
+      {
+        type: "paragraph",
+        text: "But creating a DAO to spread kindness is the highest act of all, turning belief into shared impact and uniting efforts for a better world."
+      },
+      {
+        type: "dot",
+        text: "$ADAM is created for people, not speculation."
+      },
+      {
+        type: "dot",
+        text: "$ADAM is designed with compassion at its core."
+      },
+      {
+        type: "dot",
+        text: "$ADAM turns every contribution into a step toward healing and collective transformation."
+      },
+      {
+        type: "paragraph",
+        text: "Whether you're a builder, a dreamer, or a giver, $ADAM empowers anyone to do good — transparently, together, and without the need for foundations, fame, or fortune."
+      }
+    ]
   },
   {
     id: "mission",
@@ -253,17 +261,34 @@ const AdamIntroSection = () => {
                       className="w-full z-10 flex-grow p-5"
                     >
                       <div className="space-y-4 sm:space-y-6 lg:space-y-4 text-white text-lg tracking-normal">
-                        {currentContent.content.map((item, index) =>
-                          item.type === "paragraph" ? (
-                            <p key={index} className="leading-normal">
-                              {item.text}
-                            </p>
-                          ) : (
-                            <p key={index} className="leading-normal">
-                              - {item.text}
-                            </p>
-                          ),
-                        )}
+                        {currentContent.content.map((item, index) => {
+                          if (item.type === "paragraph") {
+                            return (
+                              <p key={index} className="leading-normal">
+                                {item.text}
+                              </p>
+                            );
+                          }
+
+                          if (item.type === "bullet") {
+                            return (
+                              <p key={index} className="leading-normal">
+                                - {item.text}
+                              </p>
+                            );
+                          }
+
+                          if (item.type === "dot") {
+                            return (
+                              <p key={index} className="leading-normal">
+                                • {item.text}.
+                              </p>
+                            );
+                          }
+
+                          return null;
+                        })}
+
                       </div>
                     </motion.div>
                   )}
