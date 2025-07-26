@@ -64,7 +64,7 @@ export default function Component() {
         }
     }, [controls, inView])
 
-    const textLinesTop = ["No one changes the world alone.", "But together, we grow movements rooted in giving"]
+    const textLinesTop = ["No one changes the world alone", "But together, we grow movements rooted in giving"]
     const textLinesBottom = [
         "From every $ADAM action, a portion flows into the",
         "Karma Pool – a treasury of collective compassion",
@@ -105,7 +105,7 @@ export default function Component() {
                     <Image
                         src="/logo/hand_2.png"
                         alt="Left Hand"
-                        width={750}
+                        width={700}
                         height={300}
                         className="object-contain"
                     />
@@ -121,7 +121,7 @@ export default function Component() {
                     <Image
                         src="/logo/hand_1.png"
                         alt="Right Hand"
-                        width={750}
+                        width={700}
                         height={300}
                         className="object-contain"
                     />

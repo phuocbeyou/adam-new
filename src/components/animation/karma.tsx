@@ -383,7 +383,7 @@ export default function Karma() {
                                 transition={{ duration: 1 }}
                             >
                                 <tspan className="text-[17px]">SPIRITUAL CULTURE FUND</tspan>
-                                <tspan className="text-[17px]" x="555">10%</tspan> {/* Điều chỉnh x theo chiều rộng tổng thể */}
+                                <tspan className="text-[17px]" x="563">10%</tspan> {/* Điều chỉnh x theo chiều rộng tổng thể */}
                             </motion.text>
 
                         </motion.g>
@@ -532,24 +532,6 @@ export default function Karma() {
                             filterUnits="userSpaceOnUse"
                             colorInterpolationFilters="sRGB"
                         >
-                            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                            <feColorMatrix
-                                in="SourceAlpha"
-                                type="matrix"
-                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                result="hardAlpha"
-                            />
-                            <feOffset dy="-1.28418" />
-                            <feGaussianBlur stdDeviation="6.42091" />
-                            <feComposite in2="hardAlpha" operator="out" />
-                            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.673077 0 0 0 0 0.705769 0 0 0 1 0" />
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6254_673" />
-                            <feColorMatrix
-                                in="SourceAlpha"
-                                type="matrix"
-                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                result="hardAlpha"
-                            />
                             <feOffset dy="5.13673" />
                             <feGaussianBlur stdDeviation="18.825" />
                             <feComposite in2="hardAlpha" operator="out" />

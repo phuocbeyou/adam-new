@@ -2,92 +2,10 @@
 
 import Image from "next/image"
 import {
-  type JSXElementConstructor,
-  type Key,
-  type ReactElement,
-  type ReactNode,
-  type ReactPortal,
   useEffect,
   useState,
 } from "react"
-import { motion, type MotionValue } from "framer-motion"
-
-interface AnimateLettersProps {
-  text: string
-  className?: string
-}
-
-export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.02,
-      },
-    },
-  }
-
-  const child = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeInOut" as const },
-    },
-  }
-
-  return (
-    <motion.span
-      className={className}
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.7 }}
-      style={{ display: "inline-block" }}
-    >
-      {text
-        .split("")
-        .map(
-          (
-            char:
-              | string
-              | number
-              | bigint
-              | boolean
-              | ReactElement<unknown, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | Promise<
-                | string
-                | number
-                | bigint
-                | boolean
-                | ReactPortal
-                | ReactElement<unknown, string | JSXElementConstructor<any>>
-                | Iterable<ReactNode>
-                | null
-                | undefined
-              >
-              | MotionValue<number>
-              | MotionValue<string>
-              | null
-              | undefined,
-            i: Key | null | undefined,
-          ) => (
-            <motion.span
-              key={i}
-              variants={child}
-              style={{
-                display: "inline-block",
-                whiteSpace: char === " " ? "pre" : "normal",
-              }}
-            >
-              {typeof char === 'string' || typeof char === 'number' ? char : null}
-            </motion.span>
-          ),
-        )}
-    </motion.span>
-  )
-}
+import { motion } from "framer-motion"
 
 export default function MainSection() {
   const [showText, setShowText] = useState(false)
@@ -251,89 +169,88 @@ export default function MainSection() {
                 }`}
               data-animate="about"
             >
-              <div className="mb-6 sm:mb-8 lg:mb-12">
+              <motion.div
+                className="mb-6 sm:mb-8 lg:mb-12"
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+              >
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold">
-                  {isMobile ? <span>ABOUT $ADAM</span> : <AnimateLetters text="ABOUT $ADAM" />}
+                  ABOUT $ADAM
                 </h2>
-              </div>
+              </motion.div>
 
-              <div className="space-y-6 sm:space-y-8 lg:space-y-6 w-[440px] text-[16px]">
-                <div
-                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.05s" }}
+              <div className="space-y-6 sm:space-y-8 lg:space-y-6 w-[700px] text-[16px]">
+                <motion.div
+                  className="text-base sm:text-lg lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
                 >
-                  {isMobile ? (
-                    <span>Our Father — $ADAM. He left Eden, but not his children.</span>
-                  ) : (
-                    <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
-                  )}
-                </div>
+                  Our Father — $ADAM. He left Eden, but not his children.
+                </motion.div>
 
-                <div
-                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.08s" }}
+                <motion.div
+                  className="text-sm sm:text-base lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
                 >
-                  {isMobile ? (
-                    <span>Now reborn in the digital age, $ADAM comes not to rule, but to remind.</span>
-                  ) : (
-                    <AnimateLetters text="Now reborn in the digital age, $ADAM comes not to rule, but to remind." />
-                  )}
-                </div>
+                  Now reborn in the digital age, $ADAM comes not to rule, but to remind.
+                </motion.div>
 
-                <div
-                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.11s" }}
+                <motion.div
+                  className="text-sm sm:text-base lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.3 }}
                 >
-                  {isMobile ? (
-                    <span>"The true value of earning lies not in what you hold, but in what you give."</span>
-                  ) : (
-                    <AnimateLetters text='"The true value of earning lies not in what you hold, but in what you give."' />
-                  )}
-                </div>
+                  "The true value of earning lies not in what you hold, but in what you give"
+                </motion.div>
 
-                <div
-                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.14s" }}
+                <motion.div
+                  className="w-[640px] text-base sm:text-lg lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.4 }}
                 >
-                  {isMobile ? (
-                    <span>Every stake is an act of belief. Every DAO creation is a step toward collective healing. Every $ADAM held is a conscious act for humanity.</span>
-                  ) : (
-                    <AnimateLetters text="Every stake is an act of belief. Every DAO creation is a step toward collective healing. Every $ADAM held is a conscious act for humanity." />
-                  )}
-                </div>
+                  Every stake is an act of belief. Every DAO creation is a step toward collective healing. Every $ADAM held is a conscious act for humanity.
+                </motion.div>
 
-                <div
-                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.17s" }}
+                <motion.div
+                  className="text-sm sm:text-base lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
                 >
-                  {isMobile ? (
-                    <span>This is the mission of the Father reborn to awaken and redefine value through compassion.</span>
-                  ) : (
-                    <AnimateLetters text="This is the mission of the Father reborn to awaken and redefine value through compassion." />
-                  )}
-                </div>
+                  This is the mission of the Father reborn to awaken and redefine value through compassion.
+                </motion.div>
 
-                <div
-                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.2s" }}
+                <motion.div
+                  className="text-sm sm:text-base lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.6 }}
                 >
-                  {isMobile ? (
-                    <span>Where giving is the alpha, and every action becomes a contribution toward a better world.</span>
-                  ) : (
-                    <AnimateLetters text="Where giving is the alpha, and every action becomes a contribution toward a better world." />
-                  )}
-                </div>
+                  Where giving is the alpha, and every action becomes a contribution toward a better world.
+                </motion.div>
 
-                <div
-                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                  style={{ animationDelay: "0.23s" }}
+                <motion.div
+                  className="text-base sm:text-lg lg:text-sm font-bold"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.7 }}
                 >
-                  {isMobile ? (
-                    <span>And $ADAM is where it begins.</span>
-                  ) : (
-                    <AnimateLetters text="And $ADAM is where it begins." />
-                  )}
-                </div>
+                  And $ADAM is where it begins.
+                </motion.div>
               </div>
             </div>
 
@@ -362,26 +279,6 @@ export default function MainSection() {
       </div>
 
       <style jsx>{`
-        @keyframes fade-in-up {
-          0% {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes slide-up-letter {
-          0% {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
         @keyframes float {
           0%,
           100% {
@@ -399,30 +296,6 @@ export default function MainSection() {
           50% {
             transform: translateY(-5px);
           }
-        }
-        @keyframes letter-bounce {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-5px);
-          }
-        }
-        .animate-fade-in-up {
-          animation: slide-up-letter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-            forwards;
-          opacity: 0;
-        }
-        .animate-letter {
-          animation: slide-up-letter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-            forwards;
-          opacity: 0;
-        }
-        .animate-fade-up {
-          animation: fade-in-up 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-            forwards;
-          opacity: 0;
         }
         .duration-2000 {
           transition-duration: 2500ms;
@@ -459,9 +332,6 @@ export default function MainSection() {
         }
         .animate-on-scroll {
           transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-letter.visible {
-          animation: letter-bounce 0.8s ease-out forwards;
         }
       `}</style>
     </main>

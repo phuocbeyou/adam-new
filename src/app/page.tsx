@@ -14,7 +14,7 @@ export default function Home() {
     <div className="snap-y snap-mandatory">
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section snap-start">
         {/* Video Background */}
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-fill">
           <source src="/bg/BG-2.mp4" type="video/mp4" />
         </video>
 
@@ -36,13 +36,13 @@ export default function Home() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-auto object-cover"
+          className="absolute inset-0 w-full h-auto object-fill"
         >
-          <source src="/bg/section3.mp4" type="video/mp4" />
+          <source src="/bg/section3.mp4" type="video/mp4" className=" h-auto " />
         </video>
-        <img src="/bg/section.png" alt="" className="absolute inset-0 w-full h-auto object-cover" />
+        <img src="/bg/section.png" alt="" className="absolute inset-0 w-full h-full object-fill" />
         <div className="relative z-10">
-          <div >
+          <div id="utility">
             <AdamIntroSection />
           </div>
         </div>
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10">
-          <div id="utility">
+          <div>
             <AdamSection />
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function Home() {
       </div>
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section snap-start">
         {/* Video Background */}
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-auto object-cover">
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-auto object-fill">
           <source src="/bg/BG-3.mp4" type="video/mp4" />
         </video>
         <div className="relative z-10">

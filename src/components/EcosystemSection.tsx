@@ -104,7 +104,7 @@ export default function EcosystemSection() {
                         className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-8"
                         style={{ willChange: 'opacity, transform' }}
                     >
-                        ECHOSYSTEM
+                        ECOSYSTEM
                     </motion.h1>
 
                     <div className="max-w-2xl mx-auto space-y-4">
