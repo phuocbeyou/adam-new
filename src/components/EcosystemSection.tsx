@@ -122,11 +122,15 @@ export default function EcosystemSection() {
                         initial={{ opacity: 0, y: -50 }}
                         animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-8"
-                        style={{ willChange: 'opacity, transform' }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8"
+                        style={{
+                            willChange: 'opacity, transform',
+                            letterSpacing: '0.1em' // hoặc thử 0.1em nếu muốn giãn mạnh hơn
+                        }}
                     >
                         ECOSYSTEM
                     </motion.h1>
+
 
                     <div className="max-w-2xl mx-auto space-y-4">
                         <WordByWordFadeIn

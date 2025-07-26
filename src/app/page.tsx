@@ -11,7 +11,7 @@ import RoadmapComponent from "@/components/RoadMap"
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory">
+    <div className="snap-y snap-mandatory overflow-hidden">
       <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section snap-start">
         {/* Video Background */}
         <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-fill">
@@ -72,17 +72,27 @@ export default function Home() {
 
 
       </div>
-      <div className="min-h-screen min-w-screen relative overflow-hidden scroll-section snap-start">
+      <div className="relative w-full min-h-screen overflow-hidden scroll-section snap-start">
         {/* Video Background */}
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-auto object-fill">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        >
           <source src="/bg/BG-3.mp4" type="video/mp4" />
         </video>
+
+        {/* Nội dung bên trên video */}
         <div className="relative z-10">
           <div id="roadmap">
             <RoadmapComponent />
           </div>
         </div>
       </div>
+
+
       <div className="min-w-screen overflow-hidden scroll-section snap-start">
         <Footer />
       </div>
