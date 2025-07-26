@@ -1,5 +1,3 @@
-// src/components/HeartFunds.tsx
-import Image from "next/image";
 import Karma from "./animation/karma";
 
 export default function HeartFunds() {

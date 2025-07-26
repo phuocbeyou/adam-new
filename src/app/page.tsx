@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import AdamSection from "@/components/AdamSection"
 import { Footer } from "@/components/Footer"
 import Header from "@/components/Header"

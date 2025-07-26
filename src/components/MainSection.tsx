@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import Image from "next/image"
@@ -83,7 +81,7 @@ export function AnimateLetters({ text, className = "" }: AnimateLettersProps) {
                 whiteSpace: char === " " ? "pre" : "normal",
               }}
             >
-              {char}
+              {typeof char === 'string' || typeof char === 'number' ? char : null}
             </motion.span>
           ),
         )}
@@ -199,8 +197,8 @@ export default function MainSection() {
 
             <div
               className={`relative flex justify-center items-center mb-4 sm:mb-8 lg:mb-12 transition-all duration-800 sm:duration-1000 ${showAdam && heroAdamVisible
-                  ? "opacity-100 transform translate-y-0 scale-100"
-                  : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
+                ? "opacity-100 transform translate-y-0 scale-100"
+                : "opacity-0 transform translate-y-10 sm:translate-y-20 scale-95 sm:scale-80"
                 }`}
             >
               <div className="relative adam-character ">
@@ -288,7 +286,7 @@ export default function MainSection() {
                 {isMobile ? (
                   <span>"The true value of earning lies not in what you hold, but in what you give."</span>
                 ) : (
-                  <AnimateLetters text='"The true value of earning lies not in what you hold, but in what you give."' />
+                  <AnimateLetters text='The true value of earning lies not in what you hold, but in what you give.' />
                 )}
               </p>
 
@@ -352,8 +350,8 @@ export default function MainSection() {
             {!isMobile && (
               <div
                 className={`flex justify-center items-end transition-all duration-800 sm:duration-1000 ease-in-out ${aboutAdamVisible && visibleElements.aboutAdam
-                    ? "opacity-100 transform translate-x-0 scale-100"
-                    : "opacity-0 transform translate-x-20 scale-95"
+                  ? "opacity-100 transform translate-x-0 scale-100"
+                  : "opacity-0 transform translate-x-20 scale-95"
                   }`}
                 data-animate="aboutAdam"
               >
