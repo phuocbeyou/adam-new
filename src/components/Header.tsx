@@ -56,10 +56,10 @@ export default function Header() {
                 UTILITY
               </button>
               <button
-                onClick={() => scrollToSection("adamnomic")}
+                onClick={() => scrollToSection("impact")}
                 className="text-white hover:text-gray-900 font-medium transition-colors cursor-pointer"
               >
-                KARMA POOL
+                IMPACT
               </button>
               <button
                 onClick={() => scrollToSection("roadmap")}

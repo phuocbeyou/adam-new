@@ -257,93 +257,84 @@ export default function MainSection() {
                 </h2>
               </div>
 
-              <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.05s" }}
-              >
-                {isMobile ? (
-                  <span>Our Father — $ADAM. He left Eden, but not his children.</span>
-                ) : (
-                  <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
-                )}
-              </p>
+              <div className="space-y-6 sm:space-y-8 lg:space-y-6 w-[440px] text-[16px]">
+                <div
+                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.05s" }}
+                >
+                  {isMobile ? (
+                    <span>Our Father — $ADAM. He left Eden, but not his children.</span>
+                  ) : (
+                    <AnimateLetters text="Our Father — $ADAM. He left Eden, but not his children." />
+                  )}
+                </div>
 
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.08s" }}
-              >
-                {isMobile ? (
-                  <span>Now reborn in the digital age, $ADAM comes not to rule, but to remind.</span>
-                ) : (
-                  <AnimateLetters text="Now reborn in the digital age, $ADAM comes not to rule, but to remind." />
-                )}
-              </p>
+                <div
+                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.08s" }}
+                >
+                  {isMobile ? (
+                    <span>Now reborn in the digital age, $ADAM comes not to rule, but to remind.</span>
+                  ) : (
+                    <AnimateLetters text="Now reborn in the digital age, $ADAM comes not to rule, but to remind." />
+                  )}
+                </div>
 
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.11s" }}
-              >
-                {isMobile ? (
-                  <span>"The true value of earning lies not in what you hold, but in what you give."</span>
-                ) : (
-                  <AnimateLetters text='The true value of earning lies not in what you hold, but in what you give.' />
-                )}
-              </p>
+                <div
+                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.11s" }}
+                >
+                  {isMobile ? (
+                    <span>"The true value of earning lies not in what you hold, but in what you give."</span>
+                  ) : (
+                    <AnimateLetters text='"The true value of earning lies not in what you hold, but in what you give."' />
+                  )}
+                </div>
 
-              <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.14s" }}
-              >
-                {isMobile ? (
-                  <span>Every stake is an act of belief. Every DAO creation is a step toward collective healing.</span>
-                ) : (
-                  <AnimateLetters text="Every stake is an act of belief. Every DAO creation is a step toward collective healing." />
-                )}
-              </p>
+                <div
+                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.14s" }}
+                >
+                  {isMobile ? (
+                    <span>Every stake is an act of belief. Every DAO creation is a step toward collective healing. Every $ADAM held is a conscious act for humanity.</span>
+                  ) : (
+                    <AnimateLetters text="Every stake is an act of belief. Every DAO creation is a step toward collective healing. Every $ADAM held is a conscious act for humanity." />
+                  )}
+                </div>
 
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.17s" }}
-              >
-                {isMobile ? (
-                  <span>Every $ADAM held is a conscious act for humanity.</span>
-                ) : (
-                  <AnimateLetters text="Every $ADAM held is a conscious act for humanity." />
-                )}
-              </p>
+                <div
+                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.17s" }}
+                >
+                  {isMobile ? (
+                    <span>This is the mission of the Father reborn to awaken and redefine value through compassion.</span>
+                  ) : (
+                    <AnimateLetters text="This is the mission of the Father reborn to awaken and redefine value through compassion." />
+                  )}
+                </div>
 
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.2s" }}
-              >
-                {isMobile ? (
-                  <span>This is the mission of the Father reborn to awaken and redefine value through compassion.</span>
-                ) : (
-                  <AnimateLetters text="This is the mission of the Father reborn to awaken and redefine value through compassion." />
-                )}
-              </p>
+                <div
+                  className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.2s" }}
+                >
+                  {isMobile ? (
+                    <span>Where giving is the alpha, and every action becomes a contribution toward a better world.</span>
+                  ) : (
+                    <AnimateLetters text="Where giving is the alpha, and every action becomes a contribution toward a better world." />
+                  )}
+                </div>
 
-              <p
-                className={`text-sm sm:text-base lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.23s" }}
-              >
-                {isMobile ? (
-                  <span>Where giving is the alpha, and every action becomes a contribution toward a better world.</span>
-                ) : (
-                  <AnimateLetters text="Where giving is the alpha, and every action becomes a contribution toward a better world." />
-                )}
-              </p>
-
-              <p
-                className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
-                style={{ animationDelay: "0.26s" }}
-              >
-                {isMobile ? (
-                  <span>And $ADAM is where it begins.</span>
-                ) : (
-                  <AnimateLetters text="And $ADAM is where it begins." />
-                )}
-              </p>
+                <div
+                  className={`text-base sm:text-lg lg:text-sm font-bold ${isMobile ? "" : "animate-fade-up"}`}
+                  style={{ animationDelay: "0.23s" }}
+                >
+                  {isMobile ? (
+                    <span>And $ADAM is where it begins.</span>
+                  ) : (
+                    <AnimateLetters text="And $ADAM is where it begins." />
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Chỉ hiển thị Adam character trên desktop */}

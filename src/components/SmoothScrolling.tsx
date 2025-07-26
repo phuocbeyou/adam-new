@@ -1,14 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
 
 interface SmoothScrollingProps {
-  children: any;
+  children: ReactNode;
 }
 
 function SmoothScrolling({ children }: SmoothScrollingProps) {
-  return <ReactLenis root>{children}</ReactLenis>;
+  const pathname = usePathname();
+  const [displayedChildren, setDisplayedChildren] = useState(children);
+
+  useEffect(() => {
+    // Khi pathname thay đổi, fade out rồi update content
+    setDisplayedChildren(children);
+  }, [pathname, children]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      style={{ minHeight: "100vh" }} // Đảm bảo không jump layout
+    >
+      {displayedChildren}
+    </motion.div>
+  );
 }
 
 export default SmoothScrolling;

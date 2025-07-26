@@ -36,11 +36,12 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ iconSrc, title, description1, d
     >
       {/* Icon container với will-change để optimize rendering */}
       <div className="will-change-transform transition-transform duration-300 ease-out group-hover:scale-105">
-        <Image
+        <img
           src={iconSrc || "/placeholder.svg"}
           alt={title}
-          className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-transform duration-300 ease-out ${title === "Vote" ? "ml-[25px]" : ""}`}
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-28 xl:h-28 mb-2 sm:mb-4 object-cover transition-transform duration-300 ease-out"
         />
+
       </div>
 
       {/* Title với transform3d để hardware acceleration */}
