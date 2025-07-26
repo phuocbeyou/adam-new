@@ -91,7 +91,7 @@ export const Footer = () => {
       <img
         src="/footer/footer.png"
         alt="footer"
-        className="absolute bottom-0 w-full z-0"
+        className="absolute bottom-0 w-full z-0 object-cover min-h-[180px]"
       />
     </div>
   );

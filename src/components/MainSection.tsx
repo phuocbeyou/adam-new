@@ -92,7 +92,7 @@ export default function MainSection() {
   }, [isMobile])
 
   return (
-    <main className="relative z-10 px-3 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
+    <main className="relative z-10 px-3 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12 ">
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <section id="home" className="mb-6 sm:mb-8" data-animate="hero">
@@ -161,7 +161,7 @@ export default function MainSection() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32 ">
+        <section id="about" className="text-white mt-16 sm:mt-20 md:mt-24 lg:mt-32" style={{ scrollMarginTop: '200px' }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* About Text */}
             <div
@@ -181,7 +181,7 @@ export default function MainSection() {
                 </h2>
               </motion.div>
 
-              <div className="space-y-6 sm:space-y-8 lg:space-y-6 w-[700px] text-[16px]">
+              <div className="space-y-6 sm:space-y-8 lg:space-y-4 w-[700px] text-[16px]">
                 <motion.div
                   className="text-base sm:text-lg lg:text-sm font-bold"
                   initial={{ opacity: 0, x: -80 }}

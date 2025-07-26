@@ -41,14 +41,15 @@ export default function Component() {
         },
     }
 
-    const floatingVariants = {
-        floating: {
-            y: [0, -10, 0],
+    // Animation trái tim đập - zoom in/zoom out
+    const heartBeatingVariants = {
+        beating: {
+            scale: [1, 1.15, 1],
             transition: {
-                duration: 3,
+                duration: 1.2,
                 ease: "easeInOut" as const,
                 repeat: Infinity,
-                repeatType: "reverse" as const,
+                repeatType: "loop" as const,
             },
         },
     }
@@ -127,7 +128,7 @@ export default function Component() {
                     />
                 </motion.div>
 
-                {/* Trái tim */}
+                {/* Trái tim với animation đập */}
                 <motion.div
                     variants={heartVariants}
                     initial="hidden"
@@ -135,16 +136,16 @@ export default function Component() {
                     className="relative z-20"
                 >
                     <motion.div
-                        variants={floatingVariants}
-                        animate="floating"
+                        variants={heartBeatingVariants}
+                        animate="beating"
                         className="relative"
                     >
                         <Image
                             src="/logo/heart.png"
                             alt="Heart Gem"
-                            width={550}
+                            width={500}
                             height={250}
-                            className="object-contain hover:scale-110 transition-transform duration-300"
+                            className="object-contain transition-transform duration-300"
                         />
                     </motion.div>
                 </motion.div>
@@ -160,6 +161,13 @@ export default function Component() {
                         animate={controls}
                         transition={{ delay: index * 0.2 + 0.8, duration: 0.8, ease: "easeInOut" }}
                         className="text-lg md:text-xl lg:text-2xl font-bold"
+                        style={{
+                            textShadow: `
+                              2px 2px 4px rgba(0, 0, 0, 0.9),
+                              0 0 10px rgba(0, 0, 0, 0.7)
+                            `
+                        }}
+
                     >
                         {line}
                     </motion.p>
