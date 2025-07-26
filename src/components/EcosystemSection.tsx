@@ -92,6 +92,27 @@ export default function EcosystemSection() {
                 .animate-infinite-scroll:hover {
                     animation-play-state: paused;
                 }
+
+                .logo-card {
+                    box-shadow: 
+                        0 8px 16px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(255, 255, 255, 0.1),
+                        0 0 20px rgba(255, 255, 255, 0.8),
+                        0 0 40px rgba(255, 255, 255, 0.6),
+                        0 0 80px rgba(255, 255, 255, 0.4),
+                        0 0 120px rgba(255, 255, 255, 0.2);
+                    transition: all 0.3s ease-in-out;
+                }
+
+                .logo-card:hover {
+                    box-shadow: 
+                        0 12px 24px rgba(0, 0, 0, 0.15),
+                        0 0 0 1px rgba(255, 255, 255, 0.2),
+                        0 0 30px rgba(255, 255, 255, 1),
+                        0 0 60px rgba(255, 255, 255, 0.8),
+                        0 0 120px rgba(255, 255, 255, 0.6),
+                        0 0 200px rgba(255, 255, 255, 0.4);
+                }
             `}</style>
 
             <section className="w-full text-white overflow-hidden">
@@ -131,7 +152,31 @@ export default function EcosystemSection() {
                                 href={company.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-shrink-0 mx-4 p-4 bg-white rounded-xl shadow-lg flex items-center justify-center h-24 w-48 md:w-60 transition-transform duration-300 hover:scale-105"
+                                className="flex-shrink-0 mx-4 p-4 bg-white rounded-xl flex items-center justify-center h-24 w-48 md:w-60 transition-all duration-300 hover:scale-105"
+                                style={{
+                                    boxShadow: `
+                                        0 4px 8px rgba(0, 0, 0, 0.05),
+                                        0 -5px 15px rgba(255, 255, 255, 0.3),
+                                        0 -10px 25px rgba(255, 255, 255, 0.2),
+                                        0 -15px 35px rgba(255, 255, 255, 0.1)
+                                    `
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.boxShadow = `
+                                        0 6px 12px rgba(0, 0, 0, 0.08),
+                                        0 -8px 20px rgba(255, 255, 255, 0.4),
+                                        0 -15px 35px rgba(255, 255, 255, 0.3),
+                                        0 -25px 50px rgba(255, 255, 255, 0.15)
+                                    `
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.boxShadow = `
+                                        0 4px 8px rgba(0, 0, 0, 0.05),
+                                        0 -5px 15px rgba(255, 255, 255, 0.3),
+                                        0 -10px 25px rgba(255, 255, 255, 0.2),
+                                        0 -15px 35px rgba(255, 255, 255, 0.1)
+                                    `
+                                }}
                             >
                                 <Image
                                     src={company.src || "/placeholder.svg"}

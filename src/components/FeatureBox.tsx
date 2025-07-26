@@ -45,7 +45,7 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({ iconSrc, title, description1, d
       </div>
 
       {/* Title với transform3d để hardware acceleration */}
-      <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 text-center will-change-transform transition-all duration-300 ease-out group-hover:text-[#3DBDF1] group-hover:scale-105 group-hover:translate3d(0,0,0)">
+      <h3 className={`text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-white my-3 sm:my-4 lg:my-8 text-center will-change-transform transition-all duration-300 ease-out group-hover:text-[#3DBDF1] group-hover:scale-105 group-hover:translate3d(0,0,0) ${title === "Vote" ? "mr-[25px]" : ""}`}>
         {title}
       </h3>
 
